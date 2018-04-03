@@ -1,4 +1,7 @@
 <?php
+if( class_exists( 'wpdb')){
+	return;
+}
 //phpcs:disable
 class wpdb
 {

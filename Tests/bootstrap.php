@@ -31,8 +31,9 @@ if (! function_exists('__')) {
 		return translate($text, $domain);
 	}
 }
-
-
+//Mock WPDB (not using autoloader so it doesn't load during integration tests
+include_once __DIR__ . '/Mock/wpdb.php';
+//WordPress WPDB constants
 if ( ! defined( 'ARRAY_A')) {
 	define('OBJECT', 'OBJECT');
 	define('object', 'OBJECT');

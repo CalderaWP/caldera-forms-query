@@ -13,11 +13,12 @@ if (! $_tests_dir) {
 require_once $_tests_dir . '/includes/functions.php';
 
 /**
- * Manually load the plugin being tested.
+ * Manually load the plugin being tested and plugins it depends on
  */
 function _manually_load_plugin()
 {
 	require dirname(dirname(__FILE__)) . '/caldera-forms-query.php';
+	require __DIR__ . '/plugins/caldera-forms/caldera-core.php';
 }
 tests_add_filter('muplugins_loaded', '_manually_load_plugin');
 

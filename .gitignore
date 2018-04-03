@@ -7,3 +7,4 @@ vendor/
 *.tar.gz
 *.zip
 .php_cs.cache
+Tests/plugins/

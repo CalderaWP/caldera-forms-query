@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CalderaLearn\RestSearch\Tests\Integration;
+namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
 /**
  * Class IntegrationTestCase
