@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 
@@ -26,6 +25,5 @@ interface QueriesEntries
 	 * @param $sql
 	 * @return \stdClass[]
 	 */
-	public function getResults( $sql );
-
+	public function getResults($sql);
 }

@@ -25,17 +25,16 @@ class Entry extends SelectQueryBuilder
 	 */
 	public function queryByFormsId($formId)
 	{
-		return $this->is( 'form_id', $formId );
+		return $this->is('form_id', $formId);
 	}
 
 	public function queryByEntryId($entryId)
 	{
-		return $this->is( 'id', $entryId );
+		return $this->is('id', $entryId);
 	}
 
 	public function queryByUserId($userId)
 	{
-		return $this->is( 'user_id', $userId );
+		return $this->is('user_id', $userId);
 	}
-
 }

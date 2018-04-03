@@ -2,6 +2,7 @@
 
 
 namespace calderawp\CalderaFormsQuery\Select;
+
 use calderawp\CalderaFormsQuery\DoesQueries;
 use calderawp\CalderaFormsQuery\MySqlBuilder;
 use NilPortugues\Sql\QueryBuilder\Manipulation\Select;
@@ -29,7 +30,7 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 	/**
 	 * @var string
 	 */
-	private  $tableName;
+	private $tableName;
 
 
 	/**
@@ -37,7 +38,7 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 	 * @param MySqlBuilder $builder Query builder
 	 * @param string $tableName Name of table
 	 */
-	public function __construct( MySqlBuilder $builder, $tableName )
+	public function __construct(MySqlBuilder $builder, $tableName)
 	{
 		$this->builder = $builder;
 		$this->tableName = $tableName;
@@ -57,18 +58,19 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 
 
 	/** @inheritdoc */
-	public function getSelectQuery(){
+	public function getSelectQuery()
+	{
 
 		if (empty($this->query)) {
 			$this->query = new \NilPortugues\Sql\QueryBuilder\Manipulation\Select($this->getTableName());
-
 		}
 		return $this->query;
 	}
 
 	/** @inheritdoc */
-	public function getPreparedSql(){
-		return $this->substituteValues( $this->getBuilder()->write( $this->getSelectQuery() ));
+	public function getPreparedSql()
+	{
+		return $this->substituteValues($this->getBuilder()->write($this->getSelectQuery()));
 	}
 
 	/**
@@ -76,9 +78,10 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 	 * @param bool $ascending Optional. To use ascending order? If false, descending is used. True is the default.
 	 * @return $this
 	 */
-	public function addOrderBy( $column, $ascending = true ){
+	public function addOrderBy($column, $ascending = true)
+	{
 		$order = $ascending ? self::ASC : self::DESC;
-		$this->getSelectQuery()->orderBy( $column, $order );
+		$this->getSelectQuery()->orderBy($column, $order);
 		return $this;
 	}
 
@@ -89,11 +92,11 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 	 * @param string $value
 	 * @return $this
 	 */
-	protected function is($column, $value )
+	protected function is($column, $value)
 	{
 		$this->getSelectQuery()
 			->where()
-			->equals( $column, $value );
+			->equals($column, $value);
 		return $this;
 	}
 
@@ -104,13 +107,13 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 	 * @param string $sql SQL query with substitutions
 	 * @return string
 	 */
-	protected function substituteValues( $sql )
+	protected function substituteValues($sql)
 	{
 		$values = $this->builder->getValues();
-		foreach ( $values as $identifier => $value ) {
-			$values[ $identifier ] = $this->surroundValue( $value );
+		foreach ($values as $identifier => $value) {
+			$values[$identifier] = $this->surroundValue($value);
 		}
-		return str_replace( array_keys( $values ), array_values( $values ), $sql ) ;
+		return str_replace(array_keys($values), array_values($values), $sql);
 	}
 
 	/**
@@ -127,11 +130,8 @@ abstract class SelectQueryBuilder implements DoesQueries, DoesSelectQuery
 	 * @param string $value Value to surround
 	 * @return string
 	 */
-	protected function surroundValue( $value ){
+	protected function surroundValue($value)
+	{
 		return "{$this->getDeliminator()}$value{$this->getDeliminator()}";
 	}
-
-
-
-
 }

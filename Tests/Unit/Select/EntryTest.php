@@ -3,7 +3,6 @@
 
 namespace  calderawp\CalderaFormsQuery\Tests\Unit\Select;
 
-
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Tests\Unit\TestCase;
 
@@ -19,12 +18,11 @@ class EntryTest extends TestCase
 	{
 		$expectedSql = "SELECT `wp_cf_form_entries`.* FROM `wp_cf_form_entries` WHERE (`wp_cf_form_entries`.`form_id` = 'cf12345')";
 		$entryGenerator = $this->entryGeneratorFactory();
-		$generator = $entryGenerator->queryByFormsId( 'cf12345');
-		$this->assertTrue( $this->isAEntry($generator) );
+		$generator = $entryGenerator->queryByFormsId('cf12345');
+		$this->assertTrue($this->isAEntry($generator));
 
 		$actualSql = $entryGenerator->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
-
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**
@@ -36,11 +34,11 @@ class EntryTest extends TestCase
 	{
 		$expectedSql = "SELECT `wp_cf_form_entries`.* FROM `wp_cf_form_entries` WHERE (`wp_cf_form_entries`.`id` = '42')";
 		$entryGenerator = $this->entryGeneratorFactory();
-		$generator = $entryGenerator->queryByEntryId( 42);
-		$this->assertTrue( $this->isAEntry($generator) );
+		$generator = $entryGenerator->queryByEntryId(42);
+		$this->assertTrue($this->isAEntry($generator));
 
 		$actualSql = $entryGenerator->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**
@@ -52,11 +50,11 @@ class EntryTest extends TestCase
 	{
 		$expectedSql = "SELECT `wp_cf_form_entries`.* FROM `wp_cf_form_entries` WHERE (`wp_cf_form_entries`.`user_id` = '42')";
 		$entryGenerator = $this->entryGeneratorFactory();
-		$generator = $entryGenerator->queryByUserId( 42);
-		$this->assertTrue( $this->isAEntry($generator) );
+		$generator = $entryGenerator->queryByUserId(42);
+		$this->assertTrue($this->isAEntry($generator));
 
 		$actualSql = $entryGenerator->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**

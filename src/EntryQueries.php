@@ -3,9 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-
-
-
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 
@@ -31,7 +28,7 @@ class EntryQueries implements QueriesEntries
 	 */
 	protected $wpdb;
 
-	public function __construct( Entry $entryGenerator, EntryValues $entryValueGenerator, \wpdb $wpdb )
+	public function __construct(Entry $entryGenerator, EntryValues $entryValueGenerator, \wpdb $wpdb)
 	{
 		$this->entryGenerator = $entryGenerator;
 		$this->entryValueGenerator = $entryValueGenerator;
@@ -39,10 +36,10 @@ class EntryQueries implements QueriesEntries
 	}
 
 	/** @inheritdoc */
-	public function getResults( $sql )
+	public function getResults($sql)
 	{
-		$results = $this->wpdb->get_results( $sql );
-		if( empty( $results ) ){
+		$results = $this->wpdb->get_results($sql);
+		if (empty($results)) {
 			return [];
 		}
 		return $results;
@@ -59,5 +56,4 @@ class EntryQueries implements QueriesEntries
 	{
 		return $this->entryGenerator;
 	}
-
 }

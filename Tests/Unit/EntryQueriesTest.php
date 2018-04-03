@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Unit;
 
-
 use calderawp\CalderaFormsQuery\EntryQueries;
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
@@ -21,7 +20,7 @@ class EntryQueriesTest extends TestCase
 	public function testGetEntryGenerator()
 	{
 		$queries = $this->entryQueriesFactory();
-		$this->assertTrue( is_a( $queries->getEntryGenerator(), Entry::class) );
+		$this->assertTrue(is_a($queries->getEntryGenerator(), Entry::class));
 	}
 
 	/**
@@ -32,19 +31,17 @@ class EntryQueriesTest extends TestCase
 	 */public function testGetEntryValueGenerator()
 	{
 		$queries = $this->entryQueriesFactory();
-		$this->assertTrue( is_a( $queries->getEntryValueGenerator(), EntryValues::class) );
-	}
+		$this->assertTrue(is_a($queries->getEntryValueGenerator(), EntryValues::class));
+}
 
 	/**
 	 * Test that getResults method returns an array
 	 *
 	 * @covers EntryQueries::getResults()
 	 */
-	public function testGetResults()
-	{
-		$queries = $this->entryQueriesFactory();
-		$this->assertTrue( is_array( $queries->getResults( "SELECT `roy` FROM sivan WHERE mike = 'roy'")));
-		
-	}
-
+public function testGetResults()
+{
+	$queries = $this->entryQueriesFactory();
+	$this->assertTrue(is_array($queries->getResults("SELECT `roy` FROM sivan WHERE mike = 'roy'")));
+}
 }

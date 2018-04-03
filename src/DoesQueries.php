@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-
 interface DoesQueries
 {
 
@@ -27,5 +26,4 @@ interface DoesQueries
 	 * @return MySqlBuilder
 	 */
 	public function getBuilder();
-
 }

@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Select;
 
-
 use NilPortugues\Sql\QueryBuilder\Manipulation\Select;
 
 interface DoesSelectQuery

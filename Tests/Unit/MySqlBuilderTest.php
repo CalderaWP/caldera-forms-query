@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Unit;
 
-
 use calderawp\CalderaFormsQuery\MySqlBuilder;
 
 class MySqlBuilderTest extends TestCase
@@ -24,13 +23,12 @@ class MySqlBuilderTest extends TestCase
 
 		$query
 			->where()
-			->equals( 'mike', 'roy')
+			->equals('mike', 'roy')
 		;
 
-		$builder->write( $query );
+		$builder->write($query);
 		$values = $builder->getValues();
-		$this->assertTrue(is_array( $values ) );
-		$this->assertArrayHasKey( '%1s', $values );
-
+		$this->assertTrue(is_array($values));
+		$this->assertArrayHasKey('%1s', $values);
 	}
 }

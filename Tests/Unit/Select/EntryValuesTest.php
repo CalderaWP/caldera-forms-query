@@ -18,11 +18,11 @@ class EntryValuesTest extends TestCase
 		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`value` = 'josh@calderawp.com') AND (`cf_form_entry_values`.`slug` = 'email_address')";
 
 		$entryValues = $this->entryValuesGeneratorFactory();
-		$generator = $entryValues->queryByFieldValue( 'email_address', 'josh@calderawp.com' );
+		$generator = $entryValues->queryByFieldValue('email_address', 'josh@calderawp.com');
 		$this->assertTrue($this->isAEntryValues($generator));
 
 		$actualSql = $entryValues->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**
@@ -34,11 +34,11 @@ class EntryValuesTest extends TestCase
 	{
 		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`value` <> 'josh@calderawp.com') AND (`cf_form_entry_values`.`slug` = 'email_address')";
 		$entryValues = $this->entryValuesGeneratorFactory();
-		$generator =$entryValues->queryByFieldValue( 'email_address', 'josh@calderawp.com','notEquals' );
+		$generator =$entryValues->queryByFieldValue('email_address', 'josh@calderawp.com', 'notEquals');
 		$this->assertTrue($this->isAEntryValues($generator));
 
 		$actualSql = $entryValues->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**
@@ -52,11 +52,11 @@ class EntryValuesTest extends TestCase
 		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`value` LIKE %josh@calderawp.com%)";
 		
 		$entryValues = $this->entryValuesGeneratorFactory();
-		$generator = $entryValues->queryByFieldValue( 'email_address', 'josh@calderawp.com','like' );
+		$generator = $entryValues->queryByFieldValue('email_address', 'josh@calderawp.com', 'like');
 		$this->assertTrue($this->isAEntryValues($generator));
 
 		$actualSql = $entryValues->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**
@@ -68,11 +68,11 @@ class EntryValuesTest extends TestCase
 	{
 		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`entry_id` = '42')";
 		$entryValues = $this->entryValuesGeneratorFactory();
-		$generator = $entryValues->queryByEntryId( 42 );
+		$generator = $entryValues->queryByEntryId(42);
 		$this->assertTrue($this->isAEntryValues($generator));
 
 		$actualSql = $entryValues->getPreparedSql();
-		$this->assertEquals( $expectedSql, $actualSql );
+		$this->assertEquals($expectedSql, $actualSql);
 	}
 
 	/**
@@ -83,5 +83,4 @@ class EntryValuesTest extends TestCase
 	{
 		return is_a($generator, '\calderawp\CalderaFormsQuery\Select\EntryValues');
 	}
-
 }

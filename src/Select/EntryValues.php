@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Select;
 
-
 class EntryValues extends SelectQueryBuilder
 {
 
@@ -14,12 +13,12 @@ class EntryValues extends SelectQueryBuilder
 	 * @param $entryId
 	 * @return $this
 	 */
-	public function queryByEntryId( $entryId )
+	public function queryByEntryId($entryId)
 	{
 		 $this
 			->getSelectQuery()
 			->where()
-			->equals('entry_id', $entryId )
+			->equals('entry_id', $entryId)
 			;
 		 return $this;
 	}
@@ -33,29 +32,28 @@ class EntryValues extends SelectQueryBuilder
 	 * @param string $whereOperator Optional. Type of where. Default is 'AND'. Any valid MySQL where operator is accepted
 	 * @return $this
 	 */
-	public function queryByFieldValue( $fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND' )
+	public function queryByFieldValue($fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND')
 	{
-		switch ( $type ){
+		switch ($type) {
 			case 'equals':
 				$this
 					->getSelectQuery()
-					->where($whereOperator )
-					->equals('value', $fieldValue )
+					->where($whereOperator)
+					->equals('value', $fieldValue)
 				;
 				break;
 			case 'notEquals':
 				$this->
 				getSelectQuery()
-					->where( $whereOperator )
-					->notEquals( 'value', $fieldValue );
+					->where($whereOperator)
+					->notEquals('value', $fieldValue);
 				break;
 			case 'like':
 				$this->
 				getSelectQuery()
-					->where( $whereOperator )
-					->like( 'value', $fieldValue );
+					->where($whereOperator)
+					->like('value', $fieldValue);
 				break;
-
 		}
 
 		$this->isLike = 'like' === $type ? true : false;
@@ -66,5 +64,4 @@ class EntryValues extends SelectQueryBuilder
 
 		return $this;
 	}
-
 }
