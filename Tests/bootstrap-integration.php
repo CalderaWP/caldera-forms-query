@@ -13,11 +13,12 @@ if (! $_tests_dir) {
 require_once $_tests_dir . '/includes/functions.php';
 
 /**
- * Manually load the plugin being tested and plugins it depends on
+ * Manually load the LIBRARY being tested and plugins it depends on
  */
 function _manually_load_plugin()
 {
-	require dirname(dirname(__FILE__)) . '/caldera-forms-query.php';
+	//Include autoloader
+	require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 	//Add Caldera Forms
 	require __DIR__ . '/plugins/caldera-forms/caldera-core.php';
 	//Add some Caldera Forms testing tools

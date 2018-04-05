@@ -3,7 +3,7 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Traits;
 
-use calderawp\CalderaFormsQuery\EntryQueries;
+use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
 
 trait HasFactories
 {
@@ -64,12 +64,12 @@ trait HasFactories
 
 
 	/**
-	 * @return EntryQueries
+	 * @return SelectsCreatesSelect
 	 */
 	protected function entryQueriesFactory()
 	{
 
-		return new EntryQueries(
+		return new SelectsCreatesSelect(
 			$this->entryGeneratorFactory(),
 			$this->entryValuesGeneratorFactory(),
 			$this->getWPDB()

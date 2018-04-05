@@ -4,8 +4,8 @@
 namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
 
-use calderawp\CalderaFormsQuery\EntryQueries;
-use calderawp\CalderaFormsQuery\QueriesEntries;
+use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
+use calderawp\CalderaFormsQuery\CreatesSelectQueries;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
 use calderawp\CalderaFormsQuery\Tests\Traits\HasFactories;
@@ -18,7 +18,7 @@ class EntryQueriesGeneratorsTest extends IntegrationTestCase
 	/**
 	 * Test reset builder allows us to create new queries on generator
 	 *
-	 * @covers QueriesEntries::getEntryValueGenerator()
+	 * @covers CreatesSelectQueries::getEntryValueGenerator()
 	 * @covers EntryValues::resetQuery()
 	 */
 	public function testReset()

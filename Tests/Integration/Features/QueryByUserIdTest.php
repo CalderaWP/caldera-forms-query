@@ -2,7 +2,7 @@
 namespace calderawp\CalderaFormsQuery\Tests\Integration\Features;
 
 
-use calderawp\CalderaFormsQuery\QueriesEntries;
+use calderawp\CalderaFormsQuery\CreatesSelectQueries;
 use calderawp\CalderaFormsQuery\Tests\Integration\IntegrationTestCase;
 use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
 
@@ -14,7 +14,7 @@ class QueryByUserIdTest extends IntegrationTestCase
 	/**
 	 * Test selecting by entry ID
 	 *
-	 * @covers QueriesEntries::selectByUserId()
+	 * @covers CreatesSelectQueries::selectByUserId()
 	 */
 	public function testByUserId()
 	{

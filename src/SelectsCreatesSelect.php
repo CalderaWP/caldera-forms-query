@@ -11,7 +11,7 @@ use calderawp\CalderaFormsQuery\Select\EntryValues;
  *
  * Used to query entry data, using SQL created by genrators
  */
-class EntryQueries implements QueriesEntries
+class SelectsCreatesSelect implements CreatesSelectQueries
 {
 	/**
 	 * SQL generator for entry table

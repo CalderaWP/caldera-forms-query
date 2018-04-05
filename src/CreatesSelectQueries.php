@@ -11,7 +11,7 @@ use calderawp\CalderaFormsQuery\Select\EntryValues;
  *
  * Interface that all classes that query for entries MUST impliment
  */
-interface QueriesEntries
+interface CreatesSelectQueries
 {
 	/**
 	 * Get generator for entry values SQL

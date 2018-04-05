@@ -1,7 +1,6 @@
 {
     "name": "calderawp/caldera-forms-query",
-    "description": "Example code for a plugin that modifies default post routes to improve search",
-    "type": "wordpress-plugin",
+    "description": "Caldera Forms Query Library",
     "license": "GPL-2.0",
     "authors": [
         {

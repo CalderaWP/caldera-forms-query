@@ -4,8 +4,8 @@
  * This is the bootstrap file for Unit Tests -- run using composer unit-tests
  */
 
-//Manually include plugin
-include_once dirname(__FILE__, 2) . '/caldera-forms-query.php';
+//Autoloader
+require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 
 
 /** Translation compatibility */

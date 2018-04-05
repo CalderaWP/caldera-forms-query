@@ -3,7 +3,7 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
-use calderawp\CalderaFormsQuery\EntryQueries;
+use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
 use calderawp\CalderaFormsQuery\Tests\Traits\HasFactories;
 use calderawp\CalderaFormsQuery\Tests\Traits\UsersMockFormAsDBForm;
 
@@ -57,12 +57,12 @@ abstract class IntegrationTestCase extends \WP_UnitTestCase
 	}
 
 	/**
-	 * @return EntryQueries
+	 * @return SelectsCreatesSelect
 	 */
 	protected function entryQueriesFactory()
 	{
 
-		return new EntryQueries(
+		return new SelectsCreatesSelect(
 			$this->entryGeneratorFactory(),
 			$this->entryValuesGeneratorFactory(),
 			$this->getWPDB()
