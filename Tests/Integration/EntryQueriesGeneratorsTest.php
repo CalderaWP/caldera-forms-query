@@ -4,7 +4,7 @@
 namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
 
-use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
+use calderawp\CalderaFormsQuery\SelectQueries;
 use calderawp\CalderaFormsQuery\CreatesSelectQueries;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;

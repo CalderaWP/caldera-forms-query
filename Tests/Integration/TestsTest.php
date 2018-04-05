@@ -3,7 +3,7 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
-use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
+use calderawp\CalderaFormsQuery\SelectQueries;
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 
@@ -45,7 +45,7 @@ class TestsTest extends IntegrationTestCase
 	 */
 	public function testFactory()
 	{
-		$this->assertTrue(is_a($this->entryQueriesFactory(), SelectsCreatesSelect::class));
+		$this->assertTrue(is_a($this->entryQueriesFactory(), SelectQueries::class));
 		$this->assertTrue(is_a($this->entryValuesGeneratorFactory(), EntryValues::class));
 		$this->assertTrue(is_a($this->entryGeneratorFactory(), Entry::class));
 

@@ -7,11 +7,11 @@ use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 
 /**
- * Class EntryQueries
+ * Class SelectQueries
  *
- * Used to query entry data, using SQL created by genrators
+ * Used to query entry data, using SQL created by generators
  */
-class SelectsCreatesSelect implements CreatesSelectQueries
+class SelectQueries implements CreatesSelectQueries
 {
 	/**
 	 * SQL generator for entry table

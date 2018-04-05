@@ -4,7 +4,7 @@
 namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
 
-use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
+use calderawp\CalderaFormsQuery\SelectQueries;
 use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
 use calderawp\CalderaFormsQuery\Tests\Traits\HasFactories;
 use calderawp\CalderaFormsQuery\Tests\Traits\UsersMockFormAsDBForm;
@@ -26,7 +26,7 @@ class EntryQueriesTest extends IntegrationTestCase
 	/**
 	 * Test that getResults method runs queries against WordPress correctly
 	 *
-	 * @covers SelectsCreatesSelect::getResults()
+	 * @covers SelectQueries::getResults()
 	 */
 	public function testGetResultsCanDoSQL(){
 		$details = $this->create_entry( $this->mock_form );
@@ -44,7 +44,7 @@ class EntryQueriesTest extends IntegrationTestCase
 	/**
 	 * Test that we can run queries and the environment can update DB
 	 *
-	 * @covers SelectsCreatesSelect::getResults()
+	 * @covers SelectQueries::getResults()
 	 */
 	public function testCanQuery()
 	{

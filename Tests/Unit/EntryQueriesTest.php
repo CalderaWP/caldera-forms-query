@@ -3,7 +3,7 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Unit;
 
-use calderawp\CalderaFormsQuery\SelectsCreatesSelect;
+use calderawp\CalderaFormsQuery\SelectQueries;
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 use calderawp\CalderaFormsQuery\Select\SelectQueryBuilder;
@@ -14,8 +14,8 @@ class EntryQueriesTest extends TestCase
 	/**
 	 * Test getting entry SQL generator
 	 *
-	 * @covers SelectsCreatesSelect::getEntryGenerator()
-	 * @covers SelectsCreatesSelect::$entryGenerator
+	 * @covers SelectQueries::getEntryGenerator()
+	 * @covers SelectQueries::$entryGenerator
 	 */
 	public function testGetEntryGenerator()
 	{
@@ -26,8 +26,8 @@ class EntryQueriesTest extends TestCase
 	/**
 	 * Test getting entry values SQL generator
 	 *
-	 * @covers SelectsCreatesSelect::getEntryValueGenerator()
-	 * @covers SelectsCreatesSelect::$entryValueGenerator
+	 * @covers SelectQueries::getEntryValueGenerator()
+	 * @covers SelectQueries::$entryValueGenerator
 	 */
 	public function testGetEntryValueGenerator()
 	{
@@ -38,7 +38,7 @@ class EntryQueriesTest extends TestCase
 	/**
 	 * Test that getResults method returns an array
 	 *
-	 * @covers SelectsCreatesSelect::getResults()
+	 * @covers SelectQueries::getResults()
 	 */
 	public function testGetResults()
 	{
