@@ -9,7 +9,7 @@ use calderawp\CalderaFormsQuery\Select\EntryValues;
 /**
  * Interface QueriesEntries
  *
- * Interface that all classes that query for entries MUST impliment
+ * Interface that all classes that query for entries MUST implement
  */
 interface CreatesSelectQueries extends GetsResults
 {
@@ -25,4 +25,10 @@ interface CreatesSelectQueries extends GetsResults
 	 * @return Entry
 	 */
 	public function getEntryGenerator();
+
+	/**
+	 * @param $sql
+	 * @return \stdClass[]
+	 */
+	public function getResults($sql);
 }

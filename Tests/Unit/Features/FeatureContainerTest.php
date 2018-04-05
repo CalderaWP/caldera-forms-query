@@ -16,6 +16,7 @@ class FeatureContainerTest extends TestCase
 {
 
 	/**
+	 * Test getting the main MySQL Builder
 	 *
 	 * @covers FeatureContainer::getBuilder()
 	 * @covers FeatureContainer::bindServices()
@@ -42,6 +43,7 @@ class FeatureContainerTest extends TestCase
 	}
 
 	/**
+	 * Test getting the main query builder
 	 *
 	 * @covers FeatureContainer::bindServices()
 	 * @covers FeatureContainer::getQueries()
@@ -50,7 +52,6 @@ class FeatureContainerTest extends TestCase
 	{
 		$serviceContainer = new TheServiceContainer();
 		$container = new FeatureContainer($serviceContainer, $this->getWPDB());
-
 
 		$this->assertTrue(
 			is_a(
@@ -64,4 +65,48 @@ class FeatureContainerTest extends TestCase
 			$container->getQueries()
 		);
 	}
+
+	/**
+	 * Test the table names
+	 *
+	 * @covers FeatureContainer::getQueries()
+	 * @covers FeatureContainer::bindServices()
+	 */
+	public function testTableNames()
+	{
+		$container = $this->containerFactory();
+
+		//Select entry
+		$this->assertEquals( $this->entryTableName(),
+			$container
+				->getQueries()
+				->entrySelect()
+				->getTableName()
+		);
+
+		//Select entry value
+		$this->assertEquals( $this->entryValueTableName(),
+			$container
+				->getQueries()
+				->entryValuesSelect()
+				->getTableName()
+		);
+
+		//Delete entry
+		$this->assertEquals( $this->entryTableName(),
+			$container
+				->getQueries()
+				->entryDelete()
+				->getTableName()
+		);
+
+		//Delete entry values
+		$this->assertEquals( $this->entryValueTableName(),
+			$container
+				->getQueries()
+				->entryValueDelete()
+				->getTableName()
+		);
+	}
+
 }

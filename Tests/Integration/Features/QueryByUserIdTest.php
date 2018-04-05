@@ -11,23 +11,20 @@ class QueryByUserIdTest extends IntegrationTestCase
 
 	use CanCreateEntryWithEmailField;
 
-	/**
-	 * Test selecting by entry ID
-	 *
-	 * @covers CreatesSelectQueries::selectByUserId()
-	 */
+
 	public function testByUserId()
 	{
-		$email = 'nom@noms.noms';
+		$container = $this->containerFactory();
+
 		//Create an entry for a known user.
+		$email = 'nom@noms.noms';
 		$userId = $this->factory()->user->create(
 			[ 'user_email' => $email ]
 		);
 		wp_set_current_user( $userId );
 		$entryId = $this->createEntryWithEmail( $email );
-		$queries = $this->selectQueriesFactory();
 
-		$results = $queries->selectByUserId( $userId );
+		$results = $container->selectByUserId( $userId );
 		$this->assertEquals( $entryId, $results[0]['entry']->id);
 		$this->assertEquals( $entryId, $results[0]['entry']->id);
 
@@ -41,6 +38,7 @@ class QueryByUserIdTest extends IntegrationTestCase
 		}
 
 		$this->assertTrue( $found );
+
 
 	}
 }

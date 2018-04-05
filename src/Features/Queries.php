@@ -5,10 +5,15 @@ namespace calderawp\CalderaFormsQuery\Features;
 
 use calderawp\CalderaFormsQuery\CreatesDeleteQueries;
 use calderawp\CalderaFormsQuery\CreatesSelectQueries;
+use calderawp\CalderaFormsQuery\Delete\DeleteQueryBuilder;
+use calderawp\CalderaFormsQuery\Delete\DoesDeleteQuery;
 use calderawp\CalderaFormsQuery\Delete\Entry as EntryDelete;
 use \calderawp\CalderaFormsQuery\Delete\EntryValues as EntryValuesDelete;
+use calderawp\CalderaFormsQuery\DeleteQueries;
+use calderawp\CalderaFormsQuery\Select\DoesSelectQuery;
 use \calderawp\CalderaFormsQuery\Select\Entry as EntrySelect;
 use \calderawp\CalderaFormsQuery\Select\EntryValues as EntryValueSelect;
+use calderawp\CalderaFormsQuery\Select\SelectQueryBuilder;
 
 class Queries implements DoesQueries
 {
@@ -32,6 +37,32 @@ class Queries implements DoesQueries
 	{
 		$this->selectQueries = $selectQueries;
 		$this->deleteQueries = $deleteQueries;
+	}
+
+	/**
+	 * @param SelectQueryBuilder $query
+	 * @return \stdClass[]
+	 */
+	public function select( SelectQueryBuilder $query )
+	{
+		return $this
+			->selectQueries
+			->getResults(
+				$query->getPreparedSql()
+			);
+	}
+
+	/**
+	 * @param DeleteQueryBuilder $query
+	 * @return \stdClass[]
+	 */
+	public function delete( DeleteQueryBuilder $query )
+	{
+		return $this
+			->deleteQueries
+			->getResults(
+				$query->getPreparedSql()
+			);
 	}
 
 	/**

@@ -3,7 +3,9 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Traits;
 
+use calderawp\CalderaContainers\Service\Container;
 use calderawp\CalderaFormsQuery\DeleteQueries;
+use calderawp\CalderaFormsQuery\Features\FeatureContainer;
 use calderawp\CalderaFormsQuery\SelectQueries;
 use calderawp\CalderaFormsQuery\Tests\Unit\Features\QueriesTest;
 
@@ -99,6 +101,17 @@ trait HasFactories
 		return new \calderawp\CalderaFormsQuery\Features\Queries(
 			$this->selectQueriesFactory(),
 			$this->deleteQueriesFactory()
+		);
+	}
+
+	/**
+	 * @return FeatureContainer
+	 */
+	protected function containerFactory()
+	{
+		return new FeatureContainer(
+			new Container(),
+			$this->getWPDB()
 		);
 	}
 
