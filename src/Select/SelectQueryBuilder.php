@@ -23,7 +23,7 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 	{
 
 		if (empty($this->selectQuery)) {
-			$this->selectQuery = new \NilPortugues\Sql\QueryBuilder\Manipulation\Select($this->getTableName());
+			$this->setNewQuery();
 		}
 		return $this->selectQuery;
 	}
@@ -46,6 +46,19 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 		$order = $ascending ? self::ASC : self::DESC;
 		$this->getCurrentQuery()->orderBy($column, $order);
 		return $this;
+	}
+
+
+	/** @inheritdoc */
+	public function resetQuery()
+	{
+		$this->setNewQuery();
+		return $this;
+	}
+
+	private function setNewQuery()
+	{
+		$this->selectQuery = new \NilPortugues\Sql\QueryBuilder\Manipulation\Select($this->getTableName());
 	}
 
 

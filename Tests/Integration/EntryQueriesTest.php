@@ -5,6 +5,7 @@ namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
 
 use calderawp\CalderaFormsQuery\EntryQueries;
+use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
 use calderawp\CalderaFormsQuery\Tests\Traits\HasFactories;
 use calderawp\CalderaFormsQuery\Tests\Traits\UsersMockFormAsDBForm;
 
@@ -58,4 +59,6 @@ class EntryQueriesTest extends IntegrationTestCase
 		$this->assertTrue( ! empty( $resultsTwo ), var_export( $resultsTwo, true ) );
 
 	}
+
+
 }

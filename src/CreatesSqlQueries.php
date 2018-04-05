@@ -39,4 +39,11 @@ interface CreatesSqlQueries
 	 * @return $this
 	 */
 	public function resetBuilder( MySqlBuilder $builder = null );
+
+	/**
+	 * Reset the query
+	 *
+	 * @return $this
+	 */
+	public function resetQuery();
 }

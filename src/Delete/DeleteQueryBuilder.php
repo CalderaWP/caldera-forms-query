@@ -20,7 +20,7 @@ abstract class DeleteQueryBuilder extends QueryBuilder implements DoesDeleteQuer
 	public function getDeleteQuery()
 	{
 		if (! $this->deleteQuery) {
-			$this->deleteQuery = new Delete($this->getTableName());
+			$this->setNewQuery();
 		}
 
 		return $this->deleteQuery;
@@ -32,5 +32,19 @@ abstract class DeleteQueryBuilder extends QueryBuilder implements DoesDeleteQuer
 	public function getCurrentQuery()
 	{
 		return $this->getDeleteQuery();
+	}
+
+	/** @inheritdoc */
+	public function resetQuery()
+	{
+		$this->setNewQuery();
+	}
+
+	/**
+	 * Set a new delete query
+	 */
+	private function setNewQuery()
+	{
+		$this->deleteQuery = new Delete($this->getTableName());
 	}
 }
