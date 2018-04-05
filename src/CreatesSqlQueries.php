@@ -3,7 +3,12 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-interface DoesQueries
+/**
+ * Interface CreatesSqlQueries
+ *
+ * Interface that all classes that create SQL queries MUST impliment
+ */
+interface CreatesSqlQueries
 {
 
 	/**

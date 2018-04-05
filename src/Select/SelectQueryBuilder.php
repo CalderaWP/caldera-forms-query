@@ -3,14 +3,14 @@
 
 namespace calderawp\CalderaFormsQuery\Select;
 
-use calderawp\CalderaFormsQuery\DoesQueries;
+use calderawp\CalderaFormsQuery\CreatesSqlQueries;
 use calderawp\CalderaFormsQuery\MySqlBuilder;
 use calderawp\CalderaFormsQuery\QueryBuilder;
 use NilPortugues\Sql\QueryBuilder\Manipulation\AbstractBaseQuery;
 use NilPortugues\Sql\QueryBuilder\Manipulation\Delete;
 use NilPortugues\Sql\QueryBuilder\Manipulation\Select;
 
-abstract class SelectQueryBuilder extends QueryBuilder implements  DoesSelectQuery
+abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuery
 {
 
 	/**
@@ -47,8 +47,4 @@ abstract class SelectQueryBuilder extends QueryBuilder implements  DoesSelectQue
 		$this->getCurrentQuery()->orderBy($column, $order);
 		return $this;
 	}
-
-
-
-
 }

@@ -84,7 +84,7 @@ trait HasFactories
 	protected function getWPDB()
 	{
 		global $wpdb;
-		if (! class_exists( '\WP_User')) {
+		if (! class_exists('\WP_User')) {
 			include_once dirname(dirname(__FILE__)) . '/Mock/wpdb.php';
 		}
 

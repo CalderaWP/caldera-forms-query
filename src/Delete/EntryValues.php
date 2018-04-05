@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Delete;
 
-
 class EntryValues extends DeleteQueryBuilder
 {
 
@@ -18,7 +17,7 @@ class EntryValues extends DeleteQueryBuilder
 		$this
 			->getDeleteQuery()
 			->where()
-			->equals( 'entry_id', (int)$entryId )
+			->equals('entry_id', (int)$entryId)
 		;
 		return $this;
 	}
@@ -35,15 +34,14 @@ class EntryValues extends DeleteQueryBuilder
 		$this
 			->getDeleteQuery()
 			->where()
-			->equals( 'value', $fieldValue )
+			->equals('value', $fieldValue)
 
 		;
 
 		$this
 			->getDeleteQuery()
 			->where()
-			->equals( 'slug', $fieldSlug );
+			->equals('slug', $fieldSlug);
 		return $this;
 	}
-
 }

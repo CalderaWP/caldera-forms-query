@@ -6,6 +6,11 @@ namespace calderawp\CalderaFormsQuery;
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 
+/**
+ * Class EntryQueries
+ *
+ * Used to query entry data, using SQL created by genrators
+ */
 class EntryQueries implements QueriesEntries
 {
 	/**

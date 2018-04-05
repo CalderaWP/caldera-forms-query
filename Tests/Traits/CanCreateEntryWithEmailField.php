@@ -19,19 +19,19 @@ trait CanCreateEntryWithEmailField
 	 *
 	 * @return int
 	 */
-	protected function createEntryWithEmail( $email = 'hiroy@hiroy.club' )
+	protected function createEntryWithEmail($email = 'hiroy@hiroy.club')
 	{
 		$fieldData = [];
 		$emailFieldConfig = $this->getEmailField();
-		foreach( $this->mock_form[ 'fields' ] as $fieldId => $fieldConfig ){
-			if ( $fieldId === $emailFieldConfig[ 'ID'] ) {
+		foreach ($this->mock_form[ 'fields' ] as $fieldId => $fieldConfig) {
+			if ($fieldId === $emailFieldConfig[ 'ID']) {
 				$fieldData[ $fieldId ] = $email;
 			} else {
 				$fieldData[ $fieldId ] = rand() . $fieldId;
 			}
 		}
 
-		return \Caldera_Forms_Save_Final::create_entry( $this->mock_form, $fieldData  );
+		return \Caldera_Forms_Save_Final::create_entry($this->mock_form, $fieldData);
 	}
 
 	/**
@@ -41,7 +41,7 @@ trait CanCreateEntryWithEmailField
 	 */
 	protected function getEmailField()
 	{
-		return \Caldera_Forms_Field_Util::get_field_by_slug( 'email', $this->mock_form );
+		return \Caldera_Forms_Field_Util::get_field_by_slug('email', $this->mock_form);
 	}
 
 	/**

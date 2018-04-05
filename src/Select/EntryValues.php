@@ -29,7 +29,7 @@ class EntryValues extends SelectQueryBuilder
 	 * @param string $fieldSlug Field slug
 	 * @param string $fieldValue Field value
 	 * @param string $type Optional. Type of comparison. Values: equals|notEquals|like Default: 'equals'
-	 * @param string $whereOperator Optional. Type of where. Default is 'AND'. Any valid MySQL where operator is accepted
+	 * @param string $whereOperator Optional. Type of where. Default is 'AND'. Any valid WHERE operator is accepted
 	 * @return $this
 	 */
 	public function queryByFieldValue($fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND')

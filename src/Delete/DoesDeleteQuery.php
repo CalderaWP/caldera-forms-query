@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Delete;
 
-
 use NilPortugues\Sql\QueryBuilder\Manipulation\Delete;
 
 /**
@@ -20,5 +19,4 @@ interface DoesDeleteQuery
 	 * @return Delete
 	 */
 	public function getCurrentQuery();
-
 }

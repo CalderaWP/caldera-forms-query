@@ -33,8 +33,8 @@ class Escape
 	 * @return string Text in the form of a LIKE phrase. The output is not SQL safe. Call $wpdb::prepare()
 	 *                or real_escape next.
 	 */
-	public static function like( $text ) {
-		return addcslashes( $text, '_%\\' );
+	public static function like($text)
+	{
+		return addcslashes($text, '_%\\');
 	}
-
 }

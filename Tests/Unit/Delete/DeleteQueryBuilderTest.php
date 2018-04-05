@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Unit\Delete;
 
-
 use calderawp\CalderaFormsQuery\Delete\DeleteQueryBuilder;
 use calderawp\CalderaFormsQuery\MySqlBuilder;
 use calderawp\CalderaFormsQuery\Tests\Unit\TestCase;
@@ -40,7 +39,6 @@ class DeleteQueryBuilderTest extends TestCase
 
 		$entryValues = $this->entryValuesDeleteGeneratorFactory();
 		$this->assertTrue(is_a($entryValues->getBuilder(), MySqlBuilder::class));
-
 	}
 
 	/**
@@ -56,7 +54,6 @@ class DeleteQueryBuilderTest extends TestCase
 
 		$entryValues = $this->entryValuesDeleteGeneratorFactory();
 		$this->assertTrue(is_a($entryValues->getDeleteQuery(), Delete::class));
-
 	}
 
 	/**
@@ -68,10 +65,10 @@ class DeleteQueryBuilderTest extends TestCase
 	public function testGetDeleteQueryAndCurrentQueryAreSame()
 	{
 		$entry = $this->entryDeleteGeneratorFactory();
-		$this->assertSame( $entry->getDeleteQuery(), $entry->getCurrentQuery() );
+		$this->assertSame($entry->getDeleteQuery(), $entry->getCurrentQuery());
 
 		$entryValues = $this->entryValuesDeleteGeneratorFactory();
-		$this->assertSame( $entryValues->getDeleteQuery(), $entryValues->getCurrentQuery() );
+		$this->assertSame($entryValues->getDeleteQuery(), $entryValues->getCurrentQuery());
 	}
 
 	/**

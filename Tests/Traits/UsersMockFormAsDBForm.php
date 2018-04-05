@@ -23,6 +23,4 @@ trait UsersMockFormAsDBForm
 		$this->mock_form = \Caldera_Forms_Forms::get_form($this->mock_form_id);
 		parent::setUp();
 	}
-
-
 }

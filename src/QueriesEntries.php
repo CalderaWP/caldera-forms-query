@@ -6,6 +6,11 @@ namespace calderawp\CalderaFormsQuery;
 use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 
+/**
+ * Interface QueriesEntries
+ *
+ * Interface that all classes that query for entries MUST impliment
+ */
 interface QueriesEntries
 {
 	/**

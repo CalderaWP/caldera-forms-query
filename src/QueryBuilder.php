@@ -3,11 +3,16 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-
 use calderawp\CalderaFormsQuery\Select\DoesSelectQuery;
 use NilPortugues\Sql\QueryBuilder\Manipulation\AbstractBaseQuery;
 
-abstract class QueryBuilder implements DoesQueries
+/**
+ * Class QueryBuilder
+ *
+ *
+ * Used to create SQL queries, NOT run SQL queries
+ */
+abstract class QueryBuilder implements CreatesSqlQueries
 {
 	const ASC = 'ASC';
 	const DESC = 'DESC';
@@ -64,7 +69,7 @@ abstract class QueryBuilder implements DoesQueries
 	 * @param string $value
 	 * @return $this
 	 */
-	protected function addWhereEquals( AbstractBaseQuery $queryBuilder, $column, $value )
+	protected function addWhereEquals(AbstractBaseQuery $queryBuilder, $column, $value)
 	{
 		$queryBuilder
 			->where()
@@ -101,7 +106,8 @@ abstract class QueryBuilder implements DoesQueries
 	 */
 	protected function getSecondDeliminator()
 	{
-		return $this->isLike ? "%'" : "'";	}
+		return $this->isLike ? "%'" : "'";
+	}
 
 	/**
 	 * Surround one value with quotes or %
@@ -112,10 +118,10 @@ abstract class QueryBuilder implements DoesQueries
 	protected function surroundValue($value)
 	{
 		$value = "{$this->getFirstDeliminator()}$value{$this->getSecondDeliminator()}";
-		if( ! $this->isLike){
+		if (! $this->isLike) {
 			return $value;
 		}
-		return Escape::like( $value );
+		return Escape::like($value);
 	}
 
 
@@ -128,7 +134,7 @@ abstract class QueryBuilder implements DoesQueries
 	 */
 	protected function is($column, $value)
 	{
-		return $this->addWhereEquals($this->getCurrentQuery(),$column, $value);
+		return $this->addWhereEquals($this->getCurrentQuery(), $column, $value);
 	}
 
 	/** @inheritdoc */

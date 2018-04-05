@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Delete;
 
-
 use calderawp\CalderaFormsQuery\QueryBuilder;
 use NilPortugues\Sql\QueryBuilder\Manipulation\Delete;
 
@@ -20,7 +19,7 @@ abstract class DeleteQueryBuilder extends QueryBuilder implements DoesDeleteQuer
 	 */
 	public function getDeleteQuery()
 	{
-		if( ! $this->deleteQuery ){
+		if (! $this->deleteQuery) {
 			$this->deleteQuery = new Delete($this->getTableName());
 		}
 

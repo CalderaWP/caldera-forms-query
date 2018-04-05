@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Delete;
 
-
 class Entry extends DeleteQueryBuilder
 {
 
