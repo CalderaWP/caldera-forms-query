@@ -3,7 +3,9 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Traits;
 
+use calderawp\CalderaFormsQuery\DeleteQueries;
 use calderawp\CalderaFormsQuery\SelectQueries;
+use calderawp\CalderaFormsQuery\Tests\Unit\Features\QueriesTest;
 
 trait HasFactories
 {
@@ -66,13 +68,37 @@ trait HasFactories
 	/**
 	 * @return SelectQueries
 	 */
-	protected function entryQueriesFactory()
+	protected function selectQueriesFactory()
 	{
 
 		return new SelectQueries(
 			$this->entryGeneratorFactory(),
 			$this->entryValuesGeneratorFactory(),
 			$this->getWPDB()
+		);
+	}
+
+	/**
+	 * @return DeleteQueries
+	 */
+	protected function deleteQueriesFactory()
+	{
+
+		return new DeleteQueries(
+			$this->entryDeleteGeneratorFactory(),
+			$this->entryValuesDeleteGeneratorFactory(),
+			$this->getWPDB()
+		);
+	}
+
+	/**
+	 * @return \calderawp\CalderaFormsQuery\Features\Queries
+	 */
+	protected function featureQueriesFactory()
+	{
+		return new \calderawp\CalderaFormsQuery\Features\Queries(
+			$this->selectQueriesFactory(),
+			$this->deleteQueriesFactory()
 		);
 	}
 

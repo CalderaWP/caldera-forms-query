@@ -25,7 +25,7 @@ class QueryByUserIdTest extends IntegrationTestCase
 		);
 		wp_set_current_user( $userId );
 		$entryId = $this->createEntryWithEmail( $email );
-		$queries = $this->entryQueriesFactory();
+		$queries = $this->selectQueriesFactory();
 
 		$results = $queries->selectByUserId( $userId );
 		$this->assertEquals( $entryId, $results[0]['entry']->id);

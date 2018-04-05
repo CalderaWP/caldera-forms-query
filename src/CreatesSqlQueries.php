@@ -38,7 +38,7 @@ interface CreatesSqlQueries
 	 * @param MySqlBuilder|null $builder New builder or null to use default empty
 	 * @return $this
 	 */
-	public function resetBuilder( MySqlBuilder $builder = null );
+	public function resetBuilder(MySqlBuilder $builder = null);
 
 	/**
 	 * Reset the query

@@ -107,17 +107,17 @@ class DeleteQueryBuilderTest extends TestCase
 	{
 		$entryGenerator = $this->entryDeleteGeneratorFactory();
 		$newBuilder = new MySqlBuilder();
-		$entryGenerator->resetBuilder( $newBuilder );
-		$this->assertSame( $newBuilder, $entryGenerator->getBuilder( ) );
+		$entryGenerator->resetBuilder($newBuilder);
+		$this->assertSame($newBuilder, $entryGenerator->getBuilder());
 	}
 
 	public function testResetOfQuery()
 	{
 		$entryGenerator = $this->entryDeleteGeneratorFactory();
-		$entryGenerator->deleteByUserId(55 );
+		$entryGenerator->deleteByUserId(55);
 		$entryGenerator->resetQuery();
-		$entryGenerator->deleteByUserId( 42 );
-		$this->assertTrue( is_int( strpos( $entryGenerator->getPreparedSql(), '42' ) ) );
-		$this->assertTrue( ! is_int( strpos( $entryGenerator->getPreparedSql(), '55' ) ) );
+		$entryGenerator->deleteByUserId(42);
+		$this->assertTrue(is_int(strpos($entryGenerator->getPreparedSql(), '42')));
+		$this->assertTrue(! is_int(strpos($entryGenerator->getPreparedSql(), '55')));
 	}
 }

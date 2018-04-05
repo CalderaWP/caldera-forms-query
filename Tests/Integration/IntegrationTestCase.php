@@ -59,7 +59,7 @@ abstract class IntegrationTestCase extends \WP_UnitTestCase
 	/**
 	 * @return SelectQueries
 	 */
-	protected function entryQueriesFactory()
+	protected function selectQueriesFactory()
 	{
 
 		return new SelectQueries(

@@ -39,13 +39,13 @@ class TestsTest extends IntegrationTestCase
 	/**
 	 * Test that factories work for integration tests
 	 *
-	 * @covers HasFactories::entryQueriesFactory()
+	 * @covers HasFactories::selectQueriesFactory()
 	 * @covers HasFactories::entryValuesGeneratorFactory()
 	 * @covers HasFactories::entryGeneratorFactory()
 	 */
 	public function testFactory()
 	{
-		$this->assertTrue(is_a($this->entryQueriesFactory(), SelectQueries::class));
+		$this->assertTrue(is_a($this->selectQueriesFactory(), SelectQueries::class));
 		$this->assertTrue(is_a($this->entryValuesGeneratorFactory(), EntryValues::class));
 		$this->assertTrue(is_a($this->entryGeneratorFactory(), Entry::class));
 

@@ -11,7 +11,7 @@ use calderawp\CalderaFormsQuery\Select\EntryValues;
  *
  * Interface that all classes that query for entries MUST impliment
  */
-interface CreatesSelectQueries
+interface CreatesSelectQueries extends GetsResults
 {
 	/**
 	 * Get generator for entry values SQL
@@ -25,10 +25,4 @@ interface CreatesSelectQueries
 	 * @return Entry
 	 */
 	public function getEntryGenerator();
-
-	/**
-	 * @param $sql
-	 * @return \stdClass[]
-	 */
-	public function getResults($sql);
 }

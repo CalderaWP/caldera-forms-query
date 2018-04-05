@@ -9,7 +9,7 @@ use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
 use calderawp\CalderaFormsQuery\Tests\Traits\HasFactories;
 use calderawp\CalderaFormsQuery\Tests\Traits\UsersMockFormAsDBForm;
 
-class EntryQueriesTest extends IntegrationTestCase
+class SelectQueriesTest extends IntegrationTestCase
 {
 	use UsersMockFormAsDBForm;
 	public function setUp()
@@ -33,7 +33,7 @@ class EntryQueriesTest extends IntegrationTestCase
 		$details = $this->create_entry( $this->mock_form );
 		global $wpdb;
 		$sql = $wpdb->prepare( "SELECT COUNT(`id`) AS `total` FROM `" . $wpdb->prefix . "cf_form_entries` WHERE `form_id` = %s", $this->mock_form_id );
-		$results = $this->entryQueriesFactory()->getResults( $sql );
+		$results = $this->selectQueriesFactory()->getResults( $sql );
 		$this->assertTrue( ! empty( $results ) );
 		$this->assertEquals( 2, $results[0]->total);
 
@@ -50,12 +50,12 @@ class EntryQueriesTest extends IntegrationTestCase
 	{
 		global $wpdb;
 		$sql = $wpdb->prepare( "SELECT COUNT(`id`) AS `total` FROM `" . $wpdb->prefix . "cf_form_entries` WHERE `form_id` = %s", $this->mock_form_id );
-		$resultsOne = $this->entryQueriesFactory()->getResults( $sql );
+		$resultsOne = $this->selectQueriesFactory()->getResults( $sql );
 		$this->assertTrue( ! empty( $resultsOne ) );
 
 		$entry_details = $this->create_entry( $this->mock_form );
 		$sql = $wpdb->prepare("SELECT * FROM `" . $wpdb->prefix . "cf_form_entries` WHERE `id` = %s", $entry_details['id'] );
-		$resultsTwo = $this->entryQueriesFactory()->getResults( $sql );
+		$resultsTwo = $this->selectQueriesFactory()->getResults( $sql );
 		$this->assertTrue( ! empty( $resultsTwo ), var_export( $resultsTwo, true ) );
 
 	}

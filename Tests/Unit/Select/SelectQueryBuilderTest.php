@@ -119,7 +119,7 @@ class SelectQueryBuilderTest extends TestCase
 	{
 		$entryGenerator = $this->entryGeneratorFactory();
 		$newBuilder = new MySqlBuilder();
-		$entryGenerator->resetBuilder( $newBuilder );
-		$this->assertSame( $newBuilder, $entryGenerator->getBuilder( ) );
+		$entryGenerator->resetBuilder($newBuilder);
+		$this->assertSame($newBuilder, $entryGenerator->getBuilder());
 	}
 }

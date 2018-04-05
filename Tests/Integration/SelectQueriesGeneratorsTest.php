@@ -11,7 +11,7 @@ use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
 use calderawp\CalderaFormsQuery\Tests\Traits\HasFactories;
 use calderawp\CalderaFormsQuery\Tests\Traits\UsersMockFormAsDBForm;
 
-class EntryQueriesGeneratorsTest extends IntegrationTestCase
+class SelectQueriesGeneratorsTest extends IntegrationTestCase
 {
 	use CanCreateEntryWithEmailField;
 
@@ -27,7 +27,7 @@ class EntryQueriesGeneratorsTest extends IntegrationTestCase
 		$entryIdOne = $this->createEntryWithEmail($emailOne);
 		$emailTwo = 'two@email.com';
 		$entryIdTwo = $this->createEntryWithEmail($emailTwo);
-		$entryQueries = $this->entryQueriesFactory();
+		$entryQueries = $this->selectQueriesFactory();
 
 		//Email one by email
 		$results = $entryQueries

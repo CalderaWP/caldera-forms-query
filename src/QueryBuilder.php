@@ -47,13 +47,12 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	/** @inheritdoc */
 	public function resetBuilder(MySqlBuilder $builder = null)
 	{
-		if( ! $builder ){
+		if (! $builder) {
 			$builder = new MySqlBuilder();
 		}
 
 		$this->builder = $builder;
 		return $this;
-
 	}
 
 	/**

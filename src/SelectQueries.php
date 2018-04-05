@@ -80,8 +80,6 @@ class SelectQueries implements CreatesSelectQueries
 		$entries = $this->getResults($this->getEntryGenerator()->getPreparedSql());
 
 		return $this->collectResults($entries);
-
-
 	}
 
 	/**
@@ -125,7 +123,6 @@ class SelectQueries implements CreatesSelectQueries
 				'entry' => $entry,
 				'values' => $entryValuesPrepared
 			];
-
 		}
 		return $results;
 	}

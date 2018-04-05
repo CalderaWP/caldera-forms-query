@@ -8,7 +8,7 @@ use calderawp\CalderaFormsQuery\Select\Entry;
 use calderawp\CalderaFormsQuery\Select\EntryValues;
 use calderawp\CalderaFormsQuery\Select\SelectQueryBuilder;
 
-class EntryQueriesTest extends TestCase
+class SelectQueriesTest extends TestCase
 {
 
 	/**
@@ -19,7 +19,7 @@ class EntryQueriesTest extends TestCase
 	 */
 	public function testGetEntryGenerator()
 	{
-		$queries = $this->entryQueriesFactory();
+		$queries = $this->selectQueriesFactory();
 		$this->assertTrue(is_a($queries->getEntryGenerator(), Entry::class));
 	}
 
@@ -31,7 +31,7 @@ class EntryQueriesTest extends TestCase
 	 */
 	public function testGetEntryValueGenerator()
 	{
-		$queries = $this->entryQueriesFactory();
+		$queries = $this->selectQueriesFactory();
 		$this->assertTrue(is_a($queries->getEntryValueGenerator(), EntryValues::class));
 	}
 
@@ -42,8 +42,7 @@ class EntryQueriesTest extends TestCase
 	 */
 	public function testGetResults()
 	{
-		$queries = $this->entryQueriesFactory();
+		$queries = $this->selectQueriesFactory();
 		$this->assertTrue(is_array($queries->getResults("SELECT `roy` FROM sivan WHERE mike = 'roy'")));
 	}
-
 }
