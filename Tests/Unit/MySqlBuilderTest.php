@@ -18,7 +18,7 @@ class MySqlBuilderTest extends TestCase
 	public function testSubstitutions()
 	{
 
-		$builder = $this->MySqlBuilderFactory();
+		$builder = $this->mySqlBuilderFactory();
 		$query = new \NilPortugues\Sql\QueryBuilder\Manipulation\Select('foo');
 
 		$query

@@ -28,20 +28,21 @@ class EntryQueriesTest extends TestCase
 	 *
 	 * @covers EntryQueries::getEntryValueGenerator()
 	 * @covers EntryQueries::$entryValueGenerator
-	 */public function testGetEntryValueGenerator()
+	 */
+	public function testGetEntryValueGenerator()
 	{
 		$queries = $this->entryQueriesFactory();
 		$this->assertTrue(is_a($queries->getEntryValueGenerator(), EntryValues::class));
-}
+	}
 
 	/**
 	 * Test that getResults method returns an array
 	 *
 	 * @covers EntryQueries::getResults()
 	 */
-public function testGetResults()
-{
-	$queries = $this->entryQueriesFactory();
-	$this->assertTrue(is_array($queries->getResults("SELECT `roy` FROM sivan WHERE mike = 'roy'")));
-}
+	public function testGetResults()
+	{
+		$queries = $this->entryQueriesFactory();
+		$this->assertTrue(is_array($queries->getResults("SELECT `roy` FROM sivan WHERE mike = 'roy'")));
+	}
 }

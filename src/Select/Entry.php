@@ -6,21 +6,15 @@ namespace calderawp\CalderaFormsQuery\Select;
 /**
  * Class Entry
  * @package calderawp\CalderaFormsQuery\Select
-
-`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`form_id` varchar(18) NOT NULL DEFAULT '',
-`user_id` int(11) NOT NULL,
-`datestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-`status` varchar(20) NOT NULL DEFAULT 'active',
  */
 class Entry extends SelectQueryBuilder
 {
 
 
 	/**
+	 * Get all entries for a specific form
 	 *
-	 *
-	 * @param $formId
+	 * @param string $formId Form Id
 	 * @return $this
 	 */
 	public function queryByFormsId($formId)
@@ -28,11 +22,23 @@ class Entry extends SelectQueryBuilder
 		return $this->is('form_id', $formId);
 	}
 
+	/**
+	 * Get entry by ID
+	 *
+	 * @param int $entryId Entry ID
+	 * @return $this
+	 */
 	public function queryByEntryId($entryId)
 	{
 		return $this->is('id', $entryId);
 	}
 
+	/**
+	 * Get all entries for a specific user
+	 *
+	 * @param int $userId
+	 * @return $this
+	 */
 	public function queryByUserId($userId)
 	{
 		return $this->is('user_id', $userId);

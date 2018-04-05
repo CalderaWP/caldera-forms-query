@@ -15,7 +15,7 @@ class EntryValuesTest extends TestCase
 	 */
 	public function testQueryByFieldValueEquals()
 	{
-		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`value` = 'josh@calderawp.com') AND (`cf_form_entry_values`.`slug` = 'email_address')";
+		$expectedSql = "SELECT `{$this->entryValueTableName()}`.* FROM `{$this->entryValueTableName()}` WHERE (`{$this->entryValueTableName()}`.`value` = 'josh@calderawp.com') AND (`{$this->entryValueTableName()}`.`slug` = 'email_address')";
 
 		$entryValues = $this->entryValuesGeneratorFactory();
 		$generator = $entryValues->queryByFieldValue('email_address', 'josh@calderawp.com');
@@ -32,7 +32,7 @@ class EntryValuesTest extends TestCase
 	 */
 	public function testQueryByFieldValueNotEquals()
 	{
-		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`value` <> 'josh@calderawp.com') AND (`cf_form_entry_values`.`slug` = 'email_address')";
+		$expectedSql = "SELECT `{$this->entryValueTableName()}`.* FROM `{$this->entryValueTableName()}` WHERE (`{$this->entryValueTableName()}`.`value` <> 'josh@calderawp.com') AND (`{$this->entryValueTableName()}`.`slug` = 'email_address')";
 		$entryValues = $this->entryValuesGeneratorFactory();
 		$generator =$entryValues->queryByFieldValue('email_address', 'josh@calderawp.com', 'notEquals');
 		$this->assertTrue($this->isAEntryValues($generator));
@@ -49,7 +49,7 @@ class EntryValuesTest extends TestCase
 	 */
 	public function testQueryByFieldValueLike()
 	{
-		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`value` LIKE %josh@calderawp.com%)";
+		$expectedSql = "SELECT `{$this->entryValueTableName()}`.* FROM `{$this->entryValueTableName()}` WHERE (`{$this->entryValueTableName()}`.`value` LIKE '\%josh@calderawp.com\%')";
 		
 		$entryValues = $this->entryValuesGeneratorFactory();
 		$generator = $entryValues->queryByFieldValue('email_address', 'josh@calderawp.com', 'like');
@@ -66,7 +66,7 @@ class EntryValuesTest extends TestCase
 	 */
 	public function testQueryByEntryId()
 	{
-		$expectedSql = "SELECT `cf_form_entry_values`.* FROM `cf_form_entry_values` WHERE (`cf_form_entry_values`.`entry_id` = '42')";
+		$expectedSql = "SELECT `{$this->entryValueTableName()}`.* FROM `{$this->entryValueTableName()}` WHERE (`{$this->entryValueTableName()}`.`entry_id` = '42')";
 		$entryValues = $this->entryValuesGeneratorFactory();
 		$generator = $entryValues->queryByEntryId(42);
 		$this->assertTrue($this->isAEntryValues($generator));

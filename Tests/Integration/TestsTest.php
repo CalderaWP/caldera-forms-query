@@ -3,6 +3,10 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Integration;
 
+use calderawp\CalderaFormsQuery\EntryQueries;
+use calderawp\CalderaFormsQuery\Select\Entry;
+use calderawp\CalderaFormsQuery\Select\EntryValues;
+
 /**
  * Class TestsTest
  *
@@ -11,6 +15,8 @@ namespace calderawp\CalderaFormsQuery\Tests\Integration;
  */
 class TestsTest extends IntegrationTestCase
 {
+	//Using this so we can test that CF's testing traits are available
+	use \Caldera_Forms_Has_Mock_Form;
 
 	/**
 	 * Check that Caldera Forms is usable
@@ -19,6 +25,30 @@ class TestsTest extends IntegrationTestCase
 	{
 		$this->assertTrue( defined( 'CFCORE_VER' ) );
 		$this->assertTrue( class_exists( '\Caldera_Forms' ) );
+	}
+
+	/**
+	 * Make sure the trait worked
+	 */
+	public function testMockForm()
+	{
+		$this->set_mock_form();
+		$this->assertTrue( is_array( $this->mock_form  ) );
+	}
+
+	/**
+	 * Test that factories work for integration tests
+	 *
+	 * @covers HasFactories::entryQueriesFactory()
+	 * @covers HasFactories::entryValuesGeneratorFactory()
+	 * @covers HasFactories::entryGeneratorFactory()
+	 */
+	public function testFactory()
+	{
+		$this->assertTrue(is_a($this->entryQueriesFactory(), EntryQueries::class));
+		$this->assertTrue(is_a($this->entryValuesGeneratorFactory(), EntryValues::class));
+		$this->assertTrue(is_a($this->entryGeneratorFactory(), Entry::class));
+
 	}
 
 }

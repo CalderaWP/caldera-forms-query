@@ -22,10 +22,10 @@ class SelectQueryBuilderTest extends TestCase
 	public function testGetTableName()
 	{
 		$entry = $this->entryGeneratorFactory();
-		$this->assertEquals('wp_cf_form_entries', $entry->getTableName());
+		$this->assertEquals($this->entryTableName(), $entry->getTableName());
 
 		$entryValues = $this->entryValuesGeneratorFactory();
-		$this->assertSame('cf_form_entry_values', $entryValues->getTableName());
+		$this->assertSame($this->entryValueTableName(), $entryValues->getTableName());
 	}
 
 	/**
@@ -47,7 +47,7 @@ class SelectQueryBuilderTest extends TestCase
 	 * Test getting select query generator
 	 *
 	 * @covers SelectQueryBuilder::getSelectQuery()
-	 * @covers SelectQueryBuilder::$query
+	 * @covers SelectQueryBuilder::$selectQuery
 	 */
 	public function testGetSelectQuery()
 	{
@@ -66,7 +66,7 @@ class SelectQueryBuilderTest extends TestCase
 	public function testAddOrderByDesc()
 	{
 		$entry = $this->entryGeneratorFactory();
-		$expectedSql = "SELECT `wp_cf_form_entries`.* FROM `wp_cf_form_entries` WHERE (`wp_cf_form_entries`.`form_id` = 'cf12345') ORDER BY `wp_cf_form_entries`.`form_id` DESC";
+		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `{$this->entryTableName()}` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') ORDER BY `{$this->entryTableName()}`.`form_id` DESC";
 		$entry->queryByFormsId('cf12345');
 		$entry->addOrderBy('form_id', false);
 		$actualSql = $entry->getPreparedSql();
@@ -81,7 +81,7 @@ class SelectQueryBuilderTest extends TestCase
 	public function testAddOrderByAsc()
 	{
 		$entry = $this->entryGeneratorFactory();
-		$expectedSql = "SELECT `wp_cf_form_entries`.* FROM `wp_cf_form_entries` WHERE (`wp_cf_form_entries`.`form_id` = 'cf12345') ORDER BY `wp_cf_form_entries`.`form_id` ASC";
+		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `{$this->entryTableName()}` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') ORDER BY `{$this->entryTableName()}`.`form_id` ASC";
 		$entry->queryByFormsId('cf12345');
 		$entry->addOrderBy('form_id');
 		$actualSql = $entry->getPreparedSql();
@@ -100,7 +100,7 @@ class SelectQueryBuilderTest extends TestCase
 	}
 
 	/**
-	 * Test the SDESC constant
+	 * Test the DESC constant
 	 *
 	 * @covers SelectQueryBuilder::DESC
 	 */
