@@ -44,6 +44,18 @@ abstract class QueryBuilder implements CreatesSqlQueries
 		$this->tableName = $tableName;
 	}
 
+	/** @inheritdoc */
+	public function resetBuilder(MySqlBuilder $builder = null)
+	{
+		if( ! $builder ){
+			$builder = new MySqlBuilder();
+		}
+
+		$this->builder = $builder;
+		return $this;
+
+	}
+
 	/**
 	 * @return AbstractBaseQuery
 	 */

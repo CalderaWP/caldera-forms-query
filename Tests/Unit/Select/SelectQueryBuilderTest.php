@@ -109,4 +109,17 @@ class SelectQueryBuilderTest extends TestCase
 		$this->assertEquals(Entry::DESC, 'DESC');
 		$this->assertEquals(EntryValues::DESC, 'DESC');
 	}
+
+	/**
+	 * Test reset of builder
+	 *
+	 * @covers SelectQueryBuilder::resetBuilder()
+	 */
+	public function testResetOfBuilder()
+	{
+		$entryGenerator = $this->entryGeneratorFactory();
+		$newBuilder = new MySqlBuilder();
+		$entryGenerator->resetBuilder( $newBuilder );
+		$this->assertSame( $newBuilder, $entryGenerator->getBuilder( ) );
+	}
 }

@@ -96,4 +96,18 @@ class DeleteQueryBuilderTest extends TestCase
 				->getName()
 		);
 	}
+
+	/**
+	 * Test reset of builder
+	 *
+	 * @covers DeleteQueryBuilder::resetBuilder()
+	 * @covers DeleteQueryBuilder::$deleteQuery
+	 */
+	public function testResetOfBuilder()
+	{
+		$entryGenerator = $this->entryDeleteGeneratorFactory();
+		$newBuilder = new MySqlBuilder();
+		$entryGenerator->resetBuilder( $newBuilder );
+		$this->assertSame( $newBuilder, $entryGenerator->getBuilder( ) );
+	}
 }

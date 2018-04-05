@@ -47,4 +47,6 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 		$this->getCurrentQuery()->orderBy($column, $order);
 		return $this;
 	}
+
+
 }
