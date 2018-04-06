@@ -170,6 +170,29 @@ class FeatureContainer extends Container
 	}
 
 	/**
+	 * Delete all entry data, including field values for a collection of entries
+	 *
+	 * @param array $entryIds Entry Ids to delete
+	 * @return $this
+	 */
+	public function deleteByEntryIds(array$entryIds)
+	{
+		$this->delete(
+			$this
+			->getQueries()
+			->entryDelete()
+			->deleteByEntryIds($entryIds)
+		);
+		$this->delete(
+			$this->getQueries()
+				->entryValueDelete()
+				->deleteByEntryIds($entryIds)
+		);
+
+		return $this;
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function entryValueTableName()

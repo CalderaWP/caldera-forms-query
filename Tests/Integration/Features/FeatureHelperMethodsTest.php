@@ -17,6 +17,7 @@ class FeatureHelperMethodsTest extends IntegrationTestCase
 	 * @covers FeatureContainer::selectByUserId()
 	 * @covers FeatureContainer::collectResults()
 	 * @covers FeatureContainer::collectEntryValues()
+	 * @covers FeatureContainer::select()
 	 */
 	public function testByUserId()
 	{
@@ -52,6 +53,7 @@ class FeatureHelperMethodsTest extends IntegrationTestCase
 	 * Test selecting by a field value such as an email
 	 *
 	 * @covers FeatureContainer::selectByFieldValue()
+	 * @covers FeatureContainer::select()
 	 */
 	public function testByFieldValue()
 	{
@@ -75,6 +77,46 @@ class FeatureHelperMethodsTest extends IntegrationTestCase
 		$this->assertSame(2, count($results));
 		$this->assertSame( $email,$results[0]['values'][1]->value );
 		$this->assertSame( $email,$results[1]['values'][1]->value );
+
+	}
+
+	/**
+	 *
+	 * @covers FeatureContainer::deleteByEntryIds()
+	 * @covers FeatureContainer::delete()
+	 */
+	public function testDeleteByIds()
+	{
+		$container = $this->containerFactory();
+
+		//Create three entries
+		$entryIdOne = $this->createEntryWithMockFormAndGetEntryId();
+		$entryIdTwo = $this->createEntryWithMockFormAndGetEntryId();
+		$entryIdThree = $this->createEntryWithMockFormAndGetEntryId();
+		//Delete entry one and three
+		$container
+			->deleteByEntryIds([$entryIdOne,$entryIdThree]);
+
+		//No Entry results for entry One
+		$entryQueryGenerator = $this->entryGeneratorFactory();
+		$entryQueryGenerator->queryByEntryId($entryIdOne);
+		$sql = $entryQueryGenerator->getPreparedSql();
+		$results =  $this->queryWithWPDB($sql);
+		$this->assertSame( 0, count( $results ) );
+
+		//No Entry Value results for entry One
+		$entryValuesQueryGenerator = $this->entryValuesGeneratorFactory();
+		$entryValuesQueryGenerator->queryByEntryId($entryIdOne);
+		$sql = $entryValuesQueryGenerator->getPreparedSql();
+		$results =  $this->queryWithWPDB($sql);
+		$this->assertSame( 0, count( $results ) );
+
+		//Results for entry Two
+		$entryValuesQueryGenerator = $this->entryValuesGeneratorFactory();
+		$entryValuesQueryGenerator->queryByEntryId($entryIdTwo);
+		$sql = $entryValuesQueryGenerator->getPreparedSql();
+		$results =  $this->queryWithWPDB($sql);
+		$this->assertTrue( 0 < count( $results ) );
 
 	}
 }
