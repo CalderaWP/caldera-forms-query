@@ -28,4 +28,6 @@ class FunctionsTest extends IntegrationTestCase
 		CalderaFormsQueries()->set('sivan', 'roy' );
 		$this->assertEquals( 'roy', CalderaFormsQueries()->get('sivan') );
 	}
+
+
 }
