@@ -1,5 +1,18 @@
 [![Build Status](https://travis-ci.org/calderawp/caldera-forms-query.svg?branch=master)](https://travis-ci.org/calderawp/caldera-forms-query)
 
+This library provides for developer-friendly ways to query for or delete Caldera Forms entry data.
+
+## Why?
+* [To provide the types of queries we need for reporting and deleting data in order to add GDPR compliance to Caldera Forms]https://github.com/CalderaWP/Caldera-Forms/issues/2108
+* To provide the types of queries we need for improving Caldera Forms features such as entry viewer, entry export, entry editing and Connected Forms.
+
+## Install
+`composer require calderawp/caldera-forms-query`
+
+## Status
+* Works
+* Does not yet select/delete by date range
+* **Prepared SQL needs to be sanitized better.**
 ## Usage
 
 ```php
