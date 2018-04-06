@@ -4,6 +4,7 @@
 namespace calderawp\CalderaFormsQuery\Tests\Integration\Delete;
 
 
+use calderawp\CalderaFormsQuery\Delete\Entry;
 use calderawp\CalderaFormsQuery\Tests\Integration\IntegrationTestCase;
 
 class EntryTest extends IntegrationTestCase
@@ -159,7 +160,41 @@ class EntryTest extends IntegrationTestCase
 			)
 		));
 
+	}
 
+	/**
+	 * Test querying by IDs
+	 *
+	 * @covers Entry::deleteByEntryIds()
+	 */
+	public function testByEntryIds()
+	{
+		$entryIdOne = $this->createEntryWithMockFormAndGetEntryId();
+		$entryIdTwo = $this->createEntryWithMockFormAndGetEntryId();
+		$entryIdThree = $this->createEntryWithMockFormAndGetEntryId();
+
+		//Delete results IN One and Three
+		$entryGenerator = $this->entryDeleteGeneratorFactory();
+		$sql = $entryGenerator->deleteByEntryIds( [
+			$entryIdOne,
+			$entryIdThree
+		])
+			->getPreparedSql();
+		$this->queryWithWPDB($sql);
+
+		//Query for entry Two expect 1 result
+		$entryGenerator = $this->entryGeneratorFactory();
+		$sql = $entryGenerator->queryByEntryId($entryIdTwo)
+			->getPreparedSql();
+		$results = $this->queryWithWPDB( $sql );
+		$this->assertSame( 1, count( $results ) );
+
+		//Query for entry One expect 0 result
+		$entryGenerator = $this->entryGeneratorFactory();
+		$sql = $entryGenerator->queryByEntryId($entryIdOne)
+			->getPreparedSql();
+		$results = $this->queryWithWPDB( $sql );
+		$this->assertSame( 0, count( $results ) );
 
 	}
 

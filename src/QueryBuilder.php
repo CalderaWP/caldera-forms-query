@@ -3,7 +3,7 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-use calderawp\CalderaFormsQuery\Select\DoesSelectQuery;
+use calderawp\CalderaFormsQuery\Exceptions\Exception;
 use NilPortugues\Sql\QueryBuilder\Manipulation\AbstractBaseQuery;
 
 /**
@@ -94,12 +94,17 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	 *
 	 * @param string $sql SQL query with substitutions
 	 * @return string
+	 * @throws Exception
 	 */
 	protected function substituteValues($sql)
 	{
 		$values = $this->getBuilder()->getValues();
 		foreach ($values as $identifier => $value) {
-			$values[$identifier] = $this->surroundValue($value);
+			if (is_array( $value ) || is_object( $value ) ) {
+				continue;
+			} else {
+				$values[$identifier] = $this->surroundValue($value);
+			}
 		}
 		return str_replace(array_keys($values), array_values($values), $sql);
 	}
@@ -152,5 +157,20 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	public function getPreparedSql()
 	{
 		return $this->substituteValues($this->getBuilder()->write($this->getCurrentQuery()));
+	}
+
+	/**
+	 * Add a WHERE IN()
+	 *
+	 * @param array $entryIds
+	 * @return $this
+	 */
+	protected function in(array $entryIds)
+	{
+		$this
+			->getCurrentQuery()
+			->where()
+			->in('id', $entryIds);
+		return $this;
 	}
 }

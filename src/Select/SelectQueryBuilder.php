@@ -3,11 +3,7 @@
 
 namespace calderawp\CalderaFormsQuery\Select;
 
-use calderawp\CalderaFormsQuery\CreatesSqlQueries;
-use calderawp\CalderaFormsQuery\MySqlBuilder;
 use calderawp\CalderaFormsQuery\QueryBuilder;
-use NilPortugues\Sql\QueryBuilder\Manipulation\AbstractBaseQuery;
-use NilPortugues\Sql\QueryBuilder\Manipulation\Delete;
 use NilPortugues\Sql\QueryBuilder\Manipulation\Select;
 
 abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuery
@@ -56,8 +52,12 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 		return $this;
 	}
 
+	/**
+	 * Set new query in selectQuery prop
+	 */
 	private function setNewQuery()
 	{
 		$this->selectQuery = new \NilPortugues\Sql\QueryBuilder\Manipulation\Select($this->getTableName());
 	}
+
 }

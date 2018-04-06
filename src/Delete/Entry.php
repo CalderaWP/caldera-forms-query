@@ -29,6 +29,17 @@ class Entry extends DeleteQueryBuilder
 	}
 
 	/**
+	 * Delete an array of entries
+	 *
+	 * @param array $entryIds
+	 * @return $this
+	 */
+	public function deleteByEntryIds(array $entryIds)
+	{
+		return $this->in($entryIds);
+	}
+
+	/**
 	 * Delete entries belonging to a specific user ID
 	 *
 	 * @param $userId

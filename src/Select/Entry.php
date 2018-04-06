@@ -42,11 +42,7 @@ class Entry extends SelectQueryBuilder
 	 */
 	public function queryByEntryIds(array $entryIds)
 	{
-		$this
-			->getSelectQuery()
-			->where()
-			->in( 'id', $entryIds );
-		return $this;
+		return $this->in($entryIds);
 	}
 
 	/**
@@ -59,4 +55,6 @@ class Entry extends SelectQueryBuilder
 	{
 		return $this->is('user_id', $userId);
 	}
+
+
 }
