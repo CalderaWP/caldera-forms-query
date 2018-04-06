@@ -36,7 +36,6 @@ class FeatureContainer extends Container
 	 */
 	public function __construct(ServiceContainer $serviceContainer, \wpdb $wpdb)
 	{
-
 		$this->serviceContainer = $serviceContainer;
 		$this->wpdb = $wpdb;
 		$this->bindServices();
@@ -144,7 +143,6 @@ class FeatureContainer extends Container
 	 */
 	public function selectByFieldValue($fieldSlug, $fieldValue, $have = true)
 	{
-
 		$type = $have ? 'equals' : 'notEquals';
 		$queryForEntryValues = $this
 			->getQueries()
@@ -196,7 +194,6 @@ class FeatureContainer extends Container
 	 */
 	public function deleteByUserId($userId)
 	{
-
 		$entries = $this->select(
 			$this
 			->getQueries()
@@ -301,7 +298,7 @@ class FeatureContainer extends Container
 	private function delete(DeleteQueryBuilder $query)
 	{
 		return $this->
-		getQueries()
+			getQueries()
 			->delete($query);
 	}
 
