@@ -19,6 +19,12 @@ branches:
   only:
     - master
 
+# Extras
+addons:
+  # Make Github a known host so we can clone from it
+  ssh_known_hosts:
+  - github.com
+
 # Cache composer dependencies
 cache:
   directories:
