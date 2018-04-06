@@ -306,7 +306,7 @@ class FeatureContainer extends Container
 	 * @param $results
 	 * @return array
 	 */
-	private function reduceResultsToEntryId($results,$colum='entry_id')
+	private function reduceResultsToEntryId($results, $colum = 'entry_id')
 	{
 		foreach ($results as &$result) {
 			$result = $result->$colum;

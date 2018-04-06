@@ -15,7 +15,7 @@ use calderawp\CalderaFormsQuery\Features\FeatureContainer;
 function CalderaFormsQueries()
 {
 	static $CalderaFormsQueries;
-	if( ! $CalderaFormsQueries ){
+	if (! $CalderaFormsQueries) {
 		global $wpdb;
 		$CalderaFormsQueries = new FeatureContainer(
 			new Container(),
