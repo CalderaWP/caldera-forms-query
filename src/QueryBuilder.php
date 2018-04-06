@@ -160,17 +160,18 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	}
 
 	/**
-	 * Add a WHERE IN()
+	 * Add a WHERE IN() $column
 	 *
-	 * @param array $entryIds
+	 * @param array $entryIds Entries to search in
+	 * @param string $column Column name. Default is 'id'.
 	 * @return $this
 	 */
-	protected function in(array $entryIds)
+	protected function in(array $entryIds, $column = 'id')
 	{
 		$this
 			->getCurrentQuery()
 			->where()
-			->in('id', $entryIds);
+			->in($column, $entryIds);
 		return $this;
 	}
 }
