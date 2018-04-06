@@ -30,10 +30,12 @@ matrix:
   include:
     - php: 7.2
       env: WP_VERSION=latest
-    - php: 7.2
-      env: WP_VERSION=4.8
+    - php: 7.1
+      env: WP_VERSION=latest
     - php: 7.2
       env: WP_VERSION=trunk
+    - php: 7.2
+      env: WP_VERSION=4.8
 
 # Setup environment
 before_script:

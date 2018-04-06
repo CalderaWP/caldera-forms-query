@@ -9,6 +9,11 @@ This library provides for developer-friendly ways to query for or delete Caldera
 ## Install
 `composer require calderawp/caldera-forms-query`
 
+## Requires
+* WordPress - tested with 4.8, latest and trunk
+* PHP 5.6+ - tested with PHP 7.1 and 7.2
+* Caldera Forms 1.6.0+ - tested with Caldera Forms 1.6.1 beta 1
+
 ## Status
 * Works
 * Does not yet select/delete by date range
