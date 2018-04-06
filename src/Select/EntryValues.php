@@ -30,10 +30,16 @@ class EntryValues extends SelectQueryBuilder
 	 * @param string $fieldValue Field value
 	 * @param string $type Optional. Type of comparison. Values: equals|notEquals|like Default: 'equals'
 	 * @param string $whereOperator Optional. Type of where. Default is 'AND'. Any valid WHERE operator is accepted
+	 * @param array $columns Optional. Array of columns to select. Leave empty to select *
 	 * @return $this
 	 */
-	public function queryByFieldValue($fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND')
+	public function queryByFieldValue($fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND', $columns = [])
 	{
+		if( ! empty( $columns ) ){
+			$this
+				->getSelectQuery()
+				->setColumns( $columns );
+		}
 		switch ($type) {
 			case 'equals':
 				$this

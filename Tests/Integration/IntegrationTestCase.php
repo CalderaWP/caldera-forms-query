@@ -98,7 +98,14 @@ abstract class IntegrationTestCase extends \WP_UnitTestCase
 		return $this->create_entry( $this->mock_form );
 	}
 
-
+	/**
+	 * @return int
+	 */
+	protected function createEntryWithMockFormAndGetEntryId()
+	{
+		$details = $this->create_entry( $this->mock_form );
+		return $details[ 'id' ];
+	}
 
 
 

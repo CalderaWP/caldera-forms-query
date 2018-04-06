@@ -57,7 +57,7 @@ class EntryTest extends IntegrationTestCase
 	 */
 	public function testQueryByEntryId()
 	{
-		$entry = $this->createEntryWithMockForm();
+		$entryId = $this->createEntryWithMockFormAndGetEntryId();
 		$entryGenerator = $this->entryGeneratorFactory();
 		//No results for a non-existent entry
 		$entryGenerator->queryByEntryId(42);
@@ -66,22 +66,55 @@ class EntryTest extends IntegrationTestCase
 
 		//One entry: one result with the correct ID
 		$entryGenerator = $this->entryGeneratorFactory();
-		$entryGenerator->queryByEntryId($entry['id']);
+		$entryGenerator->queryByEntryId($entryId);
 		$sql = $entryGenerator->getPreparedSql();
 		$results =  $this->queryWithWPDB($sql);
 		$this->assertTrue( ! empty( $results ));
 		$this->assertSame( 1, count( $results ) );
-		$this->assertEquals( $results[0]->id, $entry['id']);
+		$this->assertEquals( $results[0]->id, $entryId);
 
 		//Two more entries: one result for original entry ID
 		$this->createEntryWithMockForm();
 		$this->createEntryWithMockForm();
 		$entryGenerator = $this->entryGeneratorFactory();
-		$entryGenerator->queryByEntryId($entry['id']);
+		$entryGenerator->queryByEntryId($entryId);
 		$sql = $entryGenerator->getPreparedSql();
 		$results =  $this->queryWithWPDB($sql);
 		$this->assertTrue( ! empty( $results ));
 		$this->assertSame( 1, count( $results ) );
+	}
+
+	/**
+	 * Test querying by IDs
+	 *
+	 * @covers Entry::queryByEntryIds()
+	 */
+	public function testByEntryIds()
+	{
+		$entryIdOne = $this->createEntryWithMockFormAndGetEntryId();
+		$entryIdTwo = $this->createEntryWithMockFormAndGetEntryId();
+		$entryIdThree = $this->createEntryWithMockFormAndGetEntryId();
+
+		//Two results when asking for IN One and Three
+		$entryGenerator = $this->entryGeneratorFactory();
+		$sql = $entryGenerator->queryByEntryIds( [
+				$entryIdOne,
+				$entryIdThree
+			])
+			->getPreparedSql();
+		$results = $this->queryWithWPDB( $sql );
+		$this->assertSame( 2, count( $results ) );
+
+		//One results when asking for IN Two
+		$entryGenerator = $this->entryGeneratorFactory();
+		$sql = $entryGenerator->queryByEntryIds( [
+			$entryIdTwo
+		])
+			->getPreparedSql();
+		$results = $this->queryWithWPDB( $sql );
+		$this->assertSame( 1, count( $results ) );
+
+
 	}
 
 	/**
@@ -134,6 +167,8 @@ class EntryTest extends IntegrationTestCase
 		$this->assertEquals( $userId, $resultsByEntryId[0]->user_id );
 
 	}
+
+
 
 
 

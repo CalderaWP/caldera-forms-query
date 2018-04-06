@@ -135,6 +135,41 @@ class FeatureContainer extends Container
 	}
 
 	/**
+	 * Find all entries that have or do not have field with a slug and value
+	 *
+	 * @param string $fieldSlug Field slug
+	 * @param string $fieldValue Field value
+	 * @param bool $have Optional. Default: true. If true query is for fields with this value
+	 *
+	 * @return array
+	 */
+	public function selectByFieldValue($fieldSlug, $fieldValue, $have = true )
+	{
+
+		$type = $have ? 'equals' : 'notEquals';
+		$queryForEntryValues = $this
+			->getQueries()
+			->entryValuesSelect()
+			->queryByFieldValue($fieldSlug, $fieldValue, $type, 'AND', [
+				'entry_id'
+			] );
+		$results = $this->select( $queryForEntryValues );
+		if( empty( $results ) || 0 >= count( $results )){
+			return [];
+		}
+		foreach ( $results as &$result ){
+			$result = $result->entry_id;
+		}
+
+		$queryForValues = $this
+			->getQueries()
+			->entrySelect()
+			->queryByEntryIds($results);
+
+		return $this->collectResults( $this->select( $queryForValues ) );
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function entryValueTableName()

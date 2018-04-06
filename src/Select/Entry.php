@@ -34,6 +34,22 @@ class Entry extends SelectQueryBuilder
 	}
 
 	/**
+	 * Query by entry ids
+	 *
+	 * @param array $entryIds An array of IDs to query by
+	 *
+	 * @return $this
+	 */
+	public function queryByEntryIds(array $entryIds)
+	{
+		$this
+			->getSelectQuery()
+			->where()
+			->in( 'id', $entryIds );
+		return $this;
+	}
+
+	/**
 	 * Get all entries for a specific user
 	 *
 	 * @param int $userId
