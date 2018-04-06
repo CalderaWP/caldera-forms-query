@@ -19,6 +19,4 @@ abstract class TestCase extends FrameworkTestCase
 {
 	//Factories go in this trait so they are share with integration tests
 	use HasFactories;
-
-
 }

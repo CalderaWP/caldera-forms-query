@@ -55,6 +55,4 @@ class Entry extends SelectQueryBuilder
 	{
 		return $this->is('user_id', $userId);
 	}
-
-
 }

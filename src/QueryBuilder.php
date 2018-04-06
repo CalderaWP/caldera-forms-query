@@ -100,7 +100,7 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	{
 		$values = $this->getBuilder()->getValues();
 		foreach ($values as $identifier => $value) {
-			if (is_array( $value ) || is_object( $value ) ) {
+			if (is_array($value) || is_object($value)) {
 				continue;
 			} else {
 				$values[$identifier] = $this->surroundValue($value);

@@ -43,7 +43,7 @@ class Queries implements DoesQueries
 	 * @param SelectQueryBuilder $query
 	 * @return \stdClass[]
 	 */
-	public function select( SelectQueryBuilder $query )
+	public function select(SelectQueryBuilder $query)
 	{
 		return $this
 			->selectQueries
@@ -56,7 +56,7 @@ class Queries implements DoesQueries
 	 * @param DeleteQueryBuilder $query
 	 * @return \stdClass[]
 	 */
-	public function delete( DeleteQueryBuilder $query )
+	public function delete(DeleteQueryBuilder $query)
 	{
 		return $this
 			->deleteQueries

@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Features;
 
-
 use calderawp\CalderaContainers\Container;
 use calderawp\CalderaContainers\Interfaces\ServiceContainer;
 
@@ -35,7 +34,7 @@ class FeatureContainer extends Container
 	 * @param ServiceContainer $serviceContainer
 	 * @param \wpdb $wpdb
 	 */
-	public function __construct(ServiceContainer $serviceContainer, \wpdb $wpdb )
+	public function __construct(ServiceContainer $serviceContainer, \wpdb $wpdb)
 	{
 
 		$this->serviceContainer = $serviceContainer;
@@ -49,11 +48,11 @@ class FeatureContainer extends Container
 	protected function bindServices()
 	{
 		//@TODO move these to service provider classes
-		$this->serviceContainer->singleton( MySqlBuilder::class, function(){
+		$this->serviceContainer->singleton(MySqlBuilder::class, function () {
 			return new MySqlBuilder();
 		});
 
-		$this->serviceContainer->bind( SelectQueries::class, function (){
+		$this->serviceContainer->bind(SelectQueries::class, function () {
 			//@TODO Factory
 			return new SelectQueries(
 				new EntrySelect(
@@ -68,7 +67,7 @@ class FeatureContainer extends Container
 			);
 		});
 
-		$this->serviceContainer->bind( DeleteQueries::class, function (){
+		$this->serviceContainer->bind(DeleteQueries::class, function () {
 			//@TODO Factory
 			return new DeleteQueries(
 				new EntryDelete(
@@ -83,14 +82,14 @@ class FeatureContainer extends Container
 			);
 		});
 
-		$this->serviceContainer->singleton( Queries::class, function(){
+		$this->serviceContainer->singleton(Queries::class, function () {
 			return new Queries(
 				$this
 					->serviceContainer
-					->make( SelectQueries::class ),
+					->make(SelectQueries::class),
 				$this
 					->serviceContainer
-					->make(DeleteQueries::class )
+					->make(DeleteQueries::class)
 			);
 		});
 	}
@@ -104,7 +103,7 @@ class FeatureContainer extends Container
 	{
 		return $this
 			->serviceContainer
-			->make( MySqlBuilder::class );
+			->make(MySqlBuilder::class);
 	}
 
 	/**
@@ -116,7 +115,7 @@ class FeatureContainer extends Container
 	{
 		return $this
 			->serviceContainer
-			->make( Queries::class );
+			->make(Queries::class);
 	}
 
 	/**
@@ -131,7 +130,7 @@ class FeatureContainer extends Container
 			->getQueries()
 			->entrySelect()
 			->queryByUserId($userId);
-		return $this->collectResults( $this->select( $query ) );
+		return $this->collectResults($this->select($query));
 	}
 
 	/**
@@ -143,7 +142,7 @@ class FeatureContainer extends Container
 	 *
 	 * @return array
 	 */
-	public function selectByFieldValue($fieldSlug, $fieldValue, $have = true )
+	public function selectByFieldValue($fieldSlug, $fieldValue, $have = true)
 	{
 
 		$type = $have ? 'equals' : 'notEquals';
@@ -152,21 +151,19 @@ class FeatureContainer extends Container
 			->entryValuesSelect()
 			->queryByFieldValue($fieldSlug, $fieldValue, $type, 'AND', [
 				'entry_id'
-			] );
-		$results = $this->select( $queryForEntryValues );
-		if( empty( $results ) || 0 >= count( $results )){
+			]);
+		$results = $this->select($queryForEntryValues);
+		if (empty($results) || 0 >= count($results)) {
 			return [];
 		}
-		foreach ( $results as &$result ){
-			$result = $result->entry_id;
-		}
+		$results = $this->reduceResultsToEntryId($results);
 
 		$queryForValues = $this
 			->getQueries()
 			->entrySelect()
 			->queryByEntryIds($results);
 
-		return $this->collectResults( $this->select( $queryForValues ) );
+		return $this->collectResults($this->select($queryForValues));
 	}
 
 	/**
@@ -175,13 +172,13 @@ class FeatureContainer extends Container
 	 * @param array $entryIds Entry Ids to delete
 	 * @return $this
 	 */
-	public function deleteByEntryIds(array$entryIds)
+	public function deleteByEntryIds(array $entryIds)
 	{
 		$this->delete(
 			$this
-			->getQueries()
-			->entryDelete()
-			->deleteByEntryIds($entryIds)
+				->getQueries()
+				->entryDelete()
+				->deleteByEntryIds($entryIds)
 		);
 		$this->delete(
 			$this->getQueries()
@@ -190,6 +187,37 @@ class FeatureContainer extends Container
 		);
 
 		return $this;
+	}
+
+	/**
+	 * Delete all entries and entry values by user ID
+	 *
+	 * @param int $userId
+	 */
+	public function deleteByUserId($userId)
+	{
+
+		$entries = $this->select(
+			$this
+			->getQueries()
+			->entrySelect()
+			->queryByUserId($userId)
+		);
+		if (!empty($entries)) {
+			$ids = $this->reduceResultsToEntryId($entries, 'id');
+			$this->delete(
+				$this
+					->getQueries()
+					->entryDelete()
+					->deleteByEntryIds($ids)
+			);
+			$this->delete(
+				$this
+					->getQueries()
+					->entryValueDelete()
+					->deleteByEntryIds($ids)
+			);
+		}
 	}
 
 	/**
@@ -218,7 +246,6 @@ class FeatureContainer extends Container
 	{
 		$results = [];
 		foreach ($entriesValues as $entry) {
-
 			$entry = new \Caldera_Forms_Entry_Entry($entry);
 			$query = $this
 				->getQueries()
@@ -261,8 +288,8 @@ class FeatureContainer extends Container
 	private function select(SelectQueryBuilder $query)
 	{
 		return $this
-				->getQueries()
-				->select($query);
+			->getQueries()
+			->select($query);
 	}
 
 	/**
@@ -274,9 +301,19 @@ class FeatureContainer extends Container
 	private function delete(DeleteQueryBuilder $query)
 	{
 		return $this->
-			getQueries()
+		getQueries()
 			->delete($query);
 	}
 
-
+	/**
+	 * @param $results
+	 * @return array
+	 */
+	private function reduceResultsToEntryId($results,$colum='entry_id')
+	{
+		foreach ($results as &$result) {
+			$result = $result->$colum;
+		}
+		return $results;
+	}
 }

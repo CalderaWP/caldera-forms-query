@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery;
 
-
 trait CanCollectResults
 {
 	/**

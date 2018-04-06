@@ -35,10 +35,10 @@ class EntryValues extends SelectQueryBuilder
 	 */
 	public function queryByFieldValue($fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND', $columns = [])
 	{
-		if( ! empty( $columns ) ){
+		if (! empty($columns)) {
 			$this
 				->getSelectQuery()
-				->setColumns( $columns );
+				->setColumns($columns);
 		}
 		switch ($type) {
 			case 'equals':

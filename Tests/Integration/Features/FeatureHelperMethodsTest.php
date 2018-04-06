@@ -3,6 +3,7 @@ namespace calderawp\CalderaFormsQuery\Tests\Integration\Features;
 
 
 use calderawp\CalderaFormsQuery\CreatesSelectQueries;
+use calderawp\CalderaFormsQuery\Delete\DeleteQueryBuilder;
 use calderawp\CalderaFormsQuery\Features\FeatureContainer;
 use calderawp\CalderaFormsQuery\Tests\Integration\IntegrationTestCase;
 use calderawp\CalderaFormsQuery\Tests\Traits\CanCreateEntryWithEmailField;
@@ -117,6 +118,44 @@ class FeatureHelperMethodsTest extends IntegrationTestCase
 		$sql = $entryValuesQueryGenerator->getPreparedSql();
 		$results =  $this->queryWithWPDB($sql);
 		$this->assertTrue( 0 < count( $results ) );
+
+	}
+
+	/**
+	 * Test deleting all entries for a specific user
+	 *
+	 * @covers FeatureContainer::deleteByUserId()
+	 */
+	public function testDeleteByUserId()
+	{
+		$container = $this->containerFactory();
+		//Create one entry for unknown user
+		$this->createEntryWithEmail( rand(). 'email.com' );
+
+		//Create two entries for a known user.
+		$email = 'nom@noms.noms';
+		$userId = $this->factory()->user->create(
+			[ 'user_email' => $email ]
+		);
+		wp_set_current_user( $userId );
+		$this->createEntryWithEmail( $email );
+		$this->createEntryWithEmail( $email );
+
+		//Delete messages for known user
+		$container->deleteByUserId($userId);
+
+		//Expect no entry  results when querying by known user
+		$results = $container->selectByUserId($userId);
+		$this->assertSame(0, count($results));
+
+
+		//Expect no entry value results when querying by known user
+		$results = $container->selectByFieldValue(
+			$this->getEmailFieldSlug(),
+			$email
+		);
+		$this->assertSame(0, count($results));
+
 
 	}
 }

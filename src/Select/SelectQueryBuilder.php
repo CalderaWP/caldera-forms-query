@@ -59,5 +59,4 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 	{
 		$this->selectQuery = new \NilPortugues\Sql\QueryBuilder\Manipulation\Select($this->getTableName());
 	}
-
 }

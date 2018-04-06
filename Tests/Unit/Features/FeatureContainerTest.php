@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Tests\Unit\Features;
 
-
 use calderawp\CalderaContainers\Service\Container as TheServiceContainer;
 use calderawp\CalderaFormsQuery\Features\DoesQueries;
 use calderawp\CalderaFormsQuery\Features\FeatureContainer;
@@ -25,8 +24,8 @@ class FeatureContainerTest extends TestCase
 	{
 		$serviceContainer = new TheServiceContainer();
 		$container = new FeatureContainer($serviceContainer, $this->getWPDB());
-		$this->assertTrue( is_object( $serviceContainer->make( MySqlBuilder::class ) ) );
-		$this->assertTrue( is_object( $container->getBuilder() ) );
+		$this->assertTrue(is_object($serviceContainer->make(MySqlBuilder::class)));
+		$this->assertTrue(is_object($container->getBuilder()));
 
 		$this->assertTrue(
 			is_a(
@@ -36,10 +35,9 @@ class FeatureContainerTest extends TestCase
 		);
 
 		$this->assertEquals(
-			$serviceContainer->make( MySqlBuilder::class ),
+			$serviceContainer->make(MySqlBuilder::class),
 			$container->getBuilder()
 		);
-
 	}
 
 	/**
@@ -61,7 +59,7 @@ class FeatureContainerTest extends TestCase
 		);
 
 		$this->assertEquals(
-			$serviceContainer->make( Queries::class ),
+			$serviceContainer->make(Queries::class),
 			$container->getQueries()
 		);
 	}
@@ -77,7 +75,8 @@ class FeatureContainerTest extends TestCase
 		$container = $this->containerFactory();
 
 		//Select entry
-		$this->assertEquals( $this->entryTableName(),
+		$this->assertEquals(
+			$this->entryTableName(),
 			$container
 				->getQueries()
 				->entrySelect()
@@ -85,7 +84,8 @@ class FeatureContainerTest extends TestCase
 		);
 
 		//Select entry value
-		$this->assertEquals( $this->entryValueTableName(),
+		$this->assertEquals(
+			$this->entryValueTableName(),
 			$container
 				->getQueries()
 				->entryValuesSelect()
@@ -93,7 +93,8 @@ class FeatureContainerTest extends TestCase
 		);
 
 		//Delete entry
-		$this->assertEquals( $this->entryTableName(),
+		$this->assertEquals(
+			$this->entryTableName(),
 			$container
 				->getQueries()
 				->entryDelete()
@@ -101,12 +102,12 @@ class FeatureContainerTest extends TestCase
 		);
 
 		//Delete entry values
-		$this->assertEquals( $this->entryValueTableName(),
+		$this->assertEquals(
+			$this->entryValueTableName(),
 			$container
 				->getQueries()
 				->entryValueDelete()
 				->getTableName()
 		);
 	}
-
 }

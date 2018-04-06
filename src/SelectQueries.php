@@ -77,6 +77,4 @@ class SelectQueries implements CreatesSelectQueries
 	{
 		$this->entryValueGenerator->resetQuery();
 	}
-
-
 }

@@ -30,8 +30,7 @@ class EntryValues extends DeleteQueryBuilder
 	 */
 	public function deleteByEntryIds(array $entryIds)
 	{
-		return $this->in($entryIds,'entry_id');
-
+		return $this->in($entryIds, 'entry_id');
 	}
 
 	/**
