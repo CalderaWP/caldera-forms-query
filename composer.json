@@ -22,7 +22,8 @@
     "autoload": {
         "psr-4": {
             "calderawp\\CalderaFormsQuery\\": "src"
-        }
+        },
+        "files": ["src/CalderaFormsQueries.php"]
     },
     "scripts" : {
         "tests" : "composer unit-tests && composer wp-tests",
