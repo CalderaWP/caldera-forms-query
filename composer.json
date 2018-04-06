@@ -11,7 +11,7 @@
     "repositories" : [
         {
             "type": "git",
-            "url" : "git@github.com:CalderaWP/Caldera-Forms.git"
+            "url" : "https://github.com/CalderaWP/Caldera-Forms"
         }
     ],
     "require": {
