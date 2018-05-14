@@ -14,4 +14,5 @@ interface DoesSelectQuery
 	 * @return Select
 	 */
 	public function getSelectQuery();
+
 }

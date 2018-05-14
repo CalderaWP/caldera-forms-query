@@ -3,36 +3,22 @@
 
 namespace calderawp\CalderaFormsQuery\Select;
 
-class EntryValues extends SelectQueryBuilder
+class EntryValues extends SelectQueryBuilder implements DoesSelectQueryByValue, DoesSelectQueryByEntryId
 {
 
 
-	/**
-	 * Create query by entry ID
-	 *
-	 * @param $entryId
-	 * @return $this
-	 */
+	/** @inheritdoc */
 	public function queryByEntryId($entryId)
 	{
 		 $this
 			->getSelectQuery()
 			->where()
-			->equals('entry_id', $entryId)
+			->equals($this->getEntryIdColumn(), $entryId)
 			;
 		 return $this;
 	}
 
-	/**
-	 * Create query for entry values with a field whose value equals, doesn't equal or is like (SQL LIKE) a value
-	 *
-	 * @param string $fieldSlug Field slug
-	 * @param string $fieldValue Field value
-	 * @param string $type Optional. Type of comparison. Values: equals|notEquals|like Default: 'equals'
-	 * @param string $whereOperator Optional. Type of where. Default is 'AND'. Any valid WHERE operator is accepted
-	 * @param array $columns Optional. Array of columns to select. Leave empty to select *
-	 * @return $this
-	 */
+	/** @inheritdoc */
 	public function queryByFieldValue($fieldSlug, $fieldValue, $type = 'equals', $whereOperator = 'AND', $columns = [])
 	{
 		if (! empty($columns)) {
@@ -45,20 +31,20 @@ class EntryValues extends SelectQueryBuilder
 				$this
 					->getSelectQuery()
 					->where($whereOperator)
-					->equals('value', $fieldValue)
+					->equals($this->getValueColumn(), $fieldValue)
 				;
 				break;
 			case 'notEquals':
 				$this->
 				getSelectQuery()
 					->where($whereOperator)
-					->notEquals('value', $fieldValue);
+					->notEquals($this->getValueColumn(), $fieldValue);
 				break;
 			case 'like':
 				$this->
 				getSelectQuery()
 					->where($whereOperator)
-					->like('value', $fieldValue);
+					->like($this->getValueColumn(), $fieldValue);
 				break;
 		}
 
@@ -69,5 +55,17 @@ class EntryValues extends SelectQueryBuilder
 		}
 
 		return $this;
+	}
+
+	/** @inheritdoc */
+	public function getValueColumn()
+	{
+		return 'value';
+	}
+
+	/** @inheritdoc */
+	public function getEntryIdColumn()
+	{
+		return 'entry_id';
 	}
 }
