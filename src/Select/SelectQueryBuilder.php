@@ -6,7 +6,7 @@ namespace calderawp\CalderaFormsQuery\Select;
 use calderawp\CalderaFormsQuery\QueryBuilder;
 use NilPortugues\Sql\QueryBuilder\Manipulation\Select;
 
-abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuery
+abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuery, DoesSelectQueryByEntryId
 {
 
 	/**
@@ -24,12 +24,11 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 		return $this->selectQuery;
 	}
 
-	/**
-	 * @return Select
-	 */
-	protected function getCurrentQuery()
+	/** @inheritdoc */
+	public function queryByEntryId($entryId)
 	{
-		return $this->getSelectQuery();
+		return $this->is($this->getEntryIdColumn(), $entryId);
+
 	}
 
 	/**
@@ -42,6 +41,14 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 		$order = $ascending ? self::ASC : self::DESC;
 		$this->getCurrentQuery()->orderBy($column, $order);
 		return $this;
+	}
+
+	/**
+	 * @return Select
+	 */
+	protected function getCurrentQuery()
+	{
+		return $this->getSelectQuery();
 	}
 
 

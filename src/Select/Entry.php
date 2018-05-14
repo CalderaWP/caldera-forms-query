@@ -23,17 +23,6 @@ class Entry extends SelectQueryBuilder
 	}
 
 	/**
-	 * Get entry by ID
-	 *
-	 * @param int $entryId Entry ID
-	 * @return $this
-	 */
-	public function queryByEntryId($entryId)
-	{
-		return $this->is('id', $entryId);
-	}
-
-	/**
 	 * Query by entry ids
 	 *
 	 * @param array $entryIds An array of IDs to query by
@@ -54,5 +43,11 @@ class Entry extends SelectQueryBuilder
 	public function queryByUserId($userId)
 	{
 		return $this->is('user_id', $userId);
+	}
+
+	/** @inheritdoc */
+	public function getEntryIdColumn()
+	{
+		return 'id';
 	}
 }
