@@ -148,7 +148,7 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	 * @param string $value
 	 * @return $this
 	 */
-	protected function is($column, $value)
+	public function is($column, $value)
 	{
 		return $this->addWhereEquals($this->getCurrentQuery(), $column, $value);
 	}
