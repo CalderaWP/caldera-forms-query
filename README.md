@@ -73,6 +73,57 @@ $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu
 $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu', true, 5, 50 );
 ```
 
+## Constructing Other Queries
+The feature container provides helper methods that allow for simple queries like those listed above. It also exposes the underlying query generators. 
+
+You can access any of the generators using the `getQueries()` method. For example:
+
+```php
+ $featureContainer = \calderawp\CalderaFormsQueries\CalderaFormsQueries();
+    $fieldValue = 'X@x.com';
+    $formId = 'CF5afb00e97d698';
+    $count = Caldera_Forms_Entry_Bulk::count($formId );
+
+    $entrySelector = $featureContainer
+        ->getQueries()
+        ->entrySelect();
+```
+
+#### `is()` Helper Method
+This is a more complete example showing a selection of entry values where the field with the slug `primary_email` is `roy@hiroy.club` and the field with the slug of `first_name` is `Mike`. It is also using the `is()` method to add WHERE statements, as well as the `addPagination()` method to query for the second page of results with 50 results per page.
+
+```php
+    $featureContainer = \calderawp\CalderaFormsQueries\CalderaFormsQueries();
+    $entrySelector = $featureContainer
+        ->getQueries()
+        ->entrySelect()
+        ->is( 'primary_email', 'roy@hiroy.club' )
+        ->is( 'first_name', 'Mike' )
+        ->addPagination(2,50 );
+```
+
+#### `in()` Helper Method
+This example shows selection of all entry values where the entry ID is in an array of entry IDs.
+
+```php
+    $featureContainer = \calderawp\CalderaFormsQueries\CalderaFormsQueries();
+    $entrySelector = $featureContainer
+        ->getQueries()
+        ->entrySelect()
+        ->in( 'entry_id', [ 42, 3 ] );
+```
+
+### Query Generators
+All query generators extend the `\calderawp\CalderaFormsQuery\QueryBuilder` class and impairment `\calderawp\CalderaFormsQuery\CreatesSqlQueries`.
+
+Query generators are responsible for creating SQL queries. They do not perform sequel queries.
+#### Select Query Generators
+Select query generators extend `\calderawp\CalderaFormsQuery\Select\SelectQueryBuilder` and impliment `\calderawp\CalderaFormsQuery\Select\DoesSelectQuery` and `\calderawp\CalderaFormsQuery\Select\DoesSelectQueryByEntryId`. 
+
+#### Useful Methods of `SelectQueryBuilder`s
+
+* `in()`
+
 ## Development
 ### Install
 Requires git and Composer
