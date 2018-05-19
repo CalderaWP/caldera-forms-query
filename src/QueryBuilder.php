@@ -98,15 +98,17 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	 */
 	protected function substituteValues($sql)
 	{
-		$values = $this->getBuilder()->getValues();
-		foreach ($values as $identifier => $value) {
-			if (is_array($value) || is_object($value)) {
-				continue;
-			} else {
-				$values[$identifier] = $this->surroundValue($value);
-			}
-		}
-		return str_replace(array_keys($values), array_values($values), $sql);
+        $values = $this->getBuilder()->getValues();
+        foreach ($values as $identifier => $value) {
+            if (is_array($value) || is_object($value)) {
+                continue;
+            }elseif (is_numeric( $value)){
+                $value[$identifier] = (int) $value;
+            } else {
+                $values[$identifier] = $this->surroundValue($value);
+            }
+        }
+        return str_replace(array_keys($values), array_values($values), $sql);
 	}
 
 	/**
@@ -166,7 +168,7 @@ abstract class QueryBuilder implements CreatesSqlQueries
 	 * @param string $column Column name. Default is 'id'.
 	 * @return $this
 	 */
-	protected function in(array $entryIds, $column = 'id')
+	public function in(array $entryIds, $column = 'id')
 	{
 		$this
 			->getCurrentQuery()
