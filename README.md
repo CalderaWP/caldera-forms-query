@@ -50,7 +50,6 @@ CalderaFormsQueries()->deleteByEntryIds([1,1,2,3,5,8,42]);
 CalderaFormsQueries()->deleteByUserId(42);
 ```
 
-
 ### Paginated Queries
 The selectByFieldValue feature method defaults to limiting queries to 25. You can set the page and limit with the 4th & 5th arguments.
 ```php
@@ -72,11 +71,8 @@ $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu
 $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu', true, 2 );
 //Get 5th page, with 50 results per page
 $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu', true, 5, 50 );
-
-
-
-
 ```
+
 
 ## Development
 ### Install
