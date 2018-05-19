@@ -124,6 +124,39 @@ Select query generators extend `\calderawp\CalderaFormsQuery\Select\SelectQueryB
 
 * `in()`
 
+
+### Using Query Generators To Perform SQL Queries
+
+#### SELECT
+The `getQueries()` method of the `FeatureContainer` returns a `calderawp\CalderaFormsQuery\Features\Queries` instance. This provides us with a `select` method when passed a `SelectQueryBuilder` returns an array of `stdClass` object of results.
+
+
+```php
+        $featureContainer = \calderawp\CalderaFormsQueries\CalderaFormsQueries();
+        $entryValueSelect = $featureContainer
+            ->getQueries()
+            ->entryValuesSelect()
+            ->is( 'size', 'large' );
+
+       $featureContainer->getQueries()->select( $entryValueSelect );
+```
+
+You can also access the generated SQL as a string.
+
+```php
+
+  $featureContainer = \calderawp\CalderaFormsQueries\CalderaFormsQueries();
+        $sql = $featureContainer
+            ->getQueries()
+            ->entryValuesSelect()
+            ->is( 'size', 'large' )
+            ->getPreparedSql();
+```
+
+#### DELETE
+The `Queries` class also has a `delete` method we can pass a `DeleteQueryBuilder` to perform a DELETE query against the database.
+
+
 ## Development
 ### Install
 Requires git and Composer
@@ -159,6 +192,10 @@ Run these commands from the plugin's root directory.
     - `composer wp-tests`
 * Fix All Code Formatting
     - `composer formatting`
+    
+    
+## WordPress and Caldera Forms Dependency
+For now, this library is dependent on Caldera Forms and WordPress (for `\WPDB`.) This will change, possibly with breaking changes, when [caldera-interop](https://github.com/CalderaWP/caldera-interop) is integrated with this tool.
 
 ## Stuff.
 Copyright 2018 CalderaWP LLC. License: GPL v2 or later.
