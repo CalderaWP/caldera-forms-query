@@ -28,7 +28,6 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 	public function queryByEntryId($entryId)
 	{
 		return $this->is($this->getEntryIdColumn(), $entryId);
-
 	}
 
 	/**
@@ -43,21 +42,21 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 		return $this;
 	}
 
-    /**
-     * Add pagination to a query
-     *
-     * @param int $page What page of query
-     * @param int $limit How many per page
-     *
-     * @return $this
-     */
-	public function addPagination( $page, $limit = 25 )
-    {
-        $start = 1 + ( $page * $limit) - $limit;
-        $last =  $page * $limit;
-        $this->getCurrentQuery()->limit((int)$start, (int)$last );
-        return $this;
-    }
+	/**
+	 * Add pagination to a query
+	 *
+	 * @param int $page What page of query
+	 * @param int $limit How many per page
+	 *
+	 * @return $this
+	 */
+	public function addPagination($page, $limit = 25)
+	{
+		$start = 1 + ( $page * $limit) - $limit;
+		$last =  $page * $limit;
+		$this->getCurrentQuery()->limit((int)$start, (int)$last);
+		return $this;
+	}
 
 	/**
 	 * @return Select

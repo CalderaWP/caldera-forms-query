@@ -73,7 +73,6 @@ $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu
 $entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu', true, 5, 50 );
 ```
 
-
 ## Development
 ### Install
 Requires git and Composer

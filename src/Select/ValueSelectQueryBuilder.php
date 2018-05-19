@@ -3,7 +3,6 @@
 
 namespace calderawp\CalderaFormsQuery\Select;
 
-
 abstract class ValueSelectQueryBuilder extends SelectQueryBuilder implements DoesSelectQueryByValue
 {
 

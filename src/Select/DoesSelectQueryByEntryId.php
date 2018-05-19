@@ -25,5 +25,4 @@ interface DoesSelectQueryByEntryId
 	 * @return string
 	 */
 	public function getEntryIdColumn();
-
 }
