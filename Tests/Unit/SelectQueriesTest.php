@@ -45,4 +45,6 @@ class SelectQueriesTest extends TestCase
 		$queries = $this->selectQueriesFactory();
 		$this->assertTrue(is_array($queries->getResults("SELECT `roy` FROM sivan WHERE mike = 'roy'")));
 	}
+
+
 }

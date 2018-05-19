@@ -25,6 +25,23 @@ class EntryTest extends TestCase
 		$this->assertEquals($expectedSql, $actualSql);
 	}
 
+    /**
+     * Test query by form ID
+     *
+     * @covers Entry::queryByFormsId()
+     * @covers \calderawp\CalderaFormsQuery\addPagination::()
+     */
+    public function testQueryByFormsIdPaginated()
+    {
+        $expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `wp_cf_form_entries` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') LIMIT '26', '50'";
+        $actualSql = $this
+            ->entryGeneratorFactory()
+            ->queryByFormsId('cf12345')
+            ->addPagination(2,25 )
+            ->getPreparedSql();
+        $this->assertEquals($expectedSql, $actualSql);
+    }
+
 	/**
 	 * Test query by entry ID
 	 *
@@ -56,6 +73,9 @@ class EntryTest extends TestCase
 		$actualSql = $entryGenerator->getPreparedSql();
 		$this->assertEquals($expectedSql, $actualSql);
 	}
+
+
+
 
 	/**
 	 * @param $generator
