@@ -141,12 +141,13 @@ class FeatureContainer extends Container
 	 *
 	 * @return array
 	 */
-	public function selectByFieldValue($fieldSlug, $fieldValue, $have = true)
+	public function selectByFieldValue($fieldSlug, $fieldValue, $have = true, $page = 1, $limit = 25 )
 	{
 		$type = $have ? 'equals' : 'notEquals';
 		$queryForEntryValues = $this
 			->getQueries()
 			->entryValuesSelect()
+            ->addPagination($page,$limit)
 			->queryByFieldValue($fieldSlug, $fieldValue, $type, 'AND', [
 				'entry_id'
 			]);
@@ -159,7 +160,8 @@ class FeatureContainer extends Container
 		$queryForValues = $this
 			->getQueries()
 			->entrySelect()
-			->queryByEntryIds($results);
+            ->addPagination($page,$limit)
+            ->queryByEntryIds($results);
 
 		return $this->collectResults($this->select($queryForValues));
 	}

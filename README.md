@@ -20,6 +20,8 @@ This library provides for developer-friendly ways to query for or delete Caldera
 * **Prepared SQL needs to be sanitized better.**
 ## Usage
 
+
+### Basic Queries
 ```php
 /**
  * Examples of simple queries
@@ -48,6 +50,33 @@ CalderaFormsQueries()->deleteByEntryIds([1,1,2,3,5,8,42]);
 CalderaFormsQueries()->deleteByUserId(42);
 ```
 
+
+### Paginated Queries
+The selectByFieldValue feature method defaults to limiting queries to 25. You can set the page and limit with the 4th & 5th arguments.
+```php
+/**
+ * Examples of simple queries
+ *
+ * Using the class: \calderawp\CalderaFormsQuery\Features\FeatureContainer
+ * Via the static accessor function: calderawp\CalderaFormsQueries\CalderaFormsQueries()
+ */
+
+/** First make the function usable without a full namespace */
+use function calderawp\CalderaFormsQueries\CalderaFormsQueries;
+
+/** Do Some Queries */
+//Select all entries that have a field whose slug is "email" and the value of that field's value is "delete@please.eu"
+//The first 25 entries
+$entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu' );
+//The second 25 entries
+$entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu', true, 2 );
+//Get 5th page, with 50 results per page
+$entries = CalderaFormsQueries()->selectByFieldValue( 'email', 'delete@please.eu', true, 5, 50 );
+
+
+
+
+```
 
 ## Development
 ### Install

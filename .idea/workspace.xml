@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8debb13c-dec3-4d96-b552-5550bc63772b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Unit/Select/EntryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Unit/Select/EntryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Unit/SelectQueriesTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Unit/SelectQueriesTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Select/SelectQueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Select/SelectQueryBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/FeatureContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/FeatureContainer.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,79 +15,35 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.62331575">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="DoesSelectQueryByEntryId.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Select/DoesSelectQueryByEntryId.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SelectQueriesTest.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Tests/Unit/SelectQueriesTest.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="675">
-                  <caret line="48" selection-start-line="48" selection-end-line="48" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EntryTest.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Tests/Unit/Select/EntryTest.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="35" column="161" selection-start-line="35" selection-start-column="161" selection-end-line="35" selection-end-column="161" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="QueryBuilder.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/QueryBuilder.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="457">
-                  <caret line="158" column="64" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GenericBuilder.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/vendor/nilportugues/sql-query-builder/src/Builder/GenericBuilder.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="722">
-                  <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="SelectQueryBuilder.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/Select/SelectQueryBuilder.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Select.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/vendor/nilportugues/sql-query-builder/src/Manipulation/Select.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="538">
-                  <caret line="390" column="25" selection-start-line="390" selection-start-column="15" selection-end-line="390" selection-end-column="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="SelectQueryBuilder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Select/SelectQueryBuilder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeatureContainer.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Features/FeatureContainer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="695">
+              <caret line="162" column="41" selection-start-line="162" selection-start-column="41" selection-end-line="162" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Select.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/nilportugues/sql-query-builder/src/Manipulation/Select.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="538">
+              <caret line="390" column="25" selection-start-line="390" selection-start-column="15" selection-end-line="390" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -120,6 +71,8 @@
         <option value="$PROJECT_DIR$/Tests/Unit/SelectQueriesTest.php" />
         <option value="$PROJECT_DIR$/src/Select/SelectQueryBuilder.php" />
         <option value="$PROJECT_DIR$/Tests/Unit/Select/EntryTest.php" />
+        <option value="$PROJECT_DIR$/src/Features/Queries.php" />
+        <option value="$PROJECT_DIR$/src/Features/FeatureContainer.php" />
       </list>
     </option>
   </component>
@@ -210,7 +163,7 @@
               <item name="caldera-forms-query" type="b2602c69:ProjectViewProjectNode" />
               <item name="caldera-forms-query" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Select" type="462c0819:PsiDirectoryNode" />
+              <item name="Features" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="caldera-forms-query" type="b2602c69:ProjectViewProjectNode" />
@@ -279,12 +232,12 @@
       <workItem from="1526560816008" duration="579000" />
       <workItem from="1526598533921" duration="598000" />
       <workItem from="1526685882878" duration="434000" />
-      <workItem from="1526730462374" duration="2145000" />
+      <workItem from="1526730462374" duration="2474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9967000" />
+    <option name="totallyTimeSpent" value="10296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="0" />
@@ -295,8 +248,8 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3297619" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31770834" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09105431" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.0" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14376996" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="Grunt " order="2" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -459,13 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Features/Queries.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-185">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Select/DoesSelectQuery.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -498,13 +444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="599">
           <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Features/FeatureContainer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -549,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Select/DoesSelectQueryByEntryId.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/.gitkeep">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -563,6 +495,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="30" column="7" lean-forward="true" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nilportugues/sql-query-builder/src/Manipulation/Select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="390" column="25" selection-start-line="390" selection-start-column="15" selection-end-line="390" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Unit/Select/EntryTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Unit/SelectQueriesTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Select/DoesSelectQueryByEntryId.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -580,31 +540,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/nilportugues/sql-query-builder/src/Manipulation/Select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="390" column="25" selection-start-line="390" selection-start-column="15" selection-end-line="390" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Unit/SelectQueriesTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Select/SelectQueryBuilder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="313">
           <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Unit/Select/EntryTest.php">
+    <entry file="file://$PROJECT_DIR$/src/Features/Queries.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="35" column="161" selection-start-line="35" selection-start-column="161" selection-end-line="35" selection-end-column="161" />
+        <state relative-caret-position="480">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Features/FeatureContainer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="162" column="41" selection-start-line="162" selection-start-column="41" selection-end-line="162" selection-end-column="41" />
         </state>
       </provider>
     </entry>
