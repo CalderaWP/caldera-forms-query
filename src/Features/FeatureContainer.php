@@ -7,12 +7,10 @@ use calderawp\CalderaContainers\Container;
 use calderawp\CalderaContainers\Interfaces\ServiceContainer;
 
 use calderawp\CalderaFormsQuery\Delete\DeleteQueryBuilder;
-use calderawp\CalderaFormsQuery\Delete\DoesDeleteQuery;
 use calderawp\CalderaFormsQuery\DeleteQueries;
 use calderawp\CalderaFormsQuery\MySqlBuilder;
 use calderawp\CalderaFormsQuery\Delete\Entry as EntryDelete;
 use \calderawp\CalderaFormsQuery\Delete\EntryValues as EntryValuesDelete;
-use calderawp\CalderaFormsQuery\Select\DoesSelectQuery;
 use \calderawp\CalderaFormsQuery\Select\Entry as EntrySelect;
 use \calderawp\CalderaFormsQuery\Select\EntryValues as EntryValueSelect;
 use calderawp\CalderaFormsQuery\Select\SelectQueryBuilder;
@@ -20,6 +18,7 @@ use calderawp\CalderaFormsQuery\SelectQueries;
 
 class FeatureContainer extends Container
 {
+    use CollectsResults;
 	/**
 	 * @var ServiceContainer
 	 */
@@ -260,7 +259,7 @@ class FeatureContainer extends Container
 	 * @param bool $addValues Optional Add entry values? Default is true.
 	 * @return array
 	 */
-	private function collectResults($entriesValues, $addValues = true)
+	public function collectResults($entriesValues, $addValues = true)
 	{
 		$results = [];
 		foreach ($entriesValues as $entry) {
@@ -289,7 +288,7 @@ class FeatureContainer extends Container
 	 * @param \stdClass[] $entriesValues
 	 * @return array
 	 */
-	private function collectEntryValues($entriesValues): array
+	private function collectEntryValues($entriesValues)
 	{
 		$entryValuesPrepared = [];
 		if (!empty($entriesValues)) {
@@ -327,13 +326,14 @@ class FeatureContainer extends Container
 	}
 
 	/**
-	 * @param $results
+	 * @param \stdClass[] $results Array of standard class objects
+	 * @param string $column Optional. ID column. Default is entry_id
 	 * @return array
 	 */
-	private function reduceResultsToEntryId($results, $colum = 'entry_id')
+	private function reduceResultsToEntryId($results, $column = 'entry_id')
 	{
 		foreach ($results as &$result) {
-			$result = $result->$colum;
+			$result = $result->$column;
 		}
 		return $results;
 	}
