@@ -52,10 +52,16 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
 	 */
 	public function addPagination($page, $limit = 25)
 	{
-		$start = 1 + ( $page * $limit) - $limit;
-		$last =  $page * $limit;
-		$this->getCurrentQuery()->limit((int)$start, (int)$last);
-		return $this;
+        if( 1 === intval($page) ){
+            $start = 0;
+        }else{
+            $start = 1 + ( $page * $limit) - $limit;
+
+        }
+
+        $last =  $page * $limit;
+        $this->getCurrentQuery()->limit((int)$start, (int)$last);
+        return $this;
 	}
 
 	/**
