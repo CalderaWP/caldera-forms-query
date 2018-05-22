@@ -33,7 +33,7 @@ class EntryTest extends TestCase
 	 */
 	public function testQueryByFormsIdPaginated()
 	{
-		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `wp_cf_form_entries` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') LIMIT 26, 50";
+		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `wp_cf_form_entries` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') LIMIT 25, 25";
 		$actualSql = $this
 			->entryGeneratorFactory()
 			->queryByFormsId('cf12345')

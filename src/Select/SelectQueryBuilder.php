@@ -55,12 +55,10 @@ abstract class SelectQueryBuilder extends QueryBuilder implements DoesSelectQuer
         if( 1 === intval($page) ){
             $start = 0;
         }else{
-            $start = 1 + ( $page * $limit) - $limit;
-
+            $start = ( $page * $limit) - $limit;
         }
 
-        $last =  $page * $limit;
-        $this->getCurrentQuery()->limit((int)$start, (int)$last);
+        $this->getCurrentQuery()->limit((int)$start, (int)$limit);
         return $this;
 	}
 
