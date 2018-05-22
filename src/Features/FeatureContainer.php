@@ -18,7 +18,6 @@ use calderawp\CalderaFormsQuery\SelectQueries;
 
 class FeatureContainer extends Container
 {
-    use CollectsResults;
 	/**
 	 * @var ServiceContainer
 	 */
