@@ -33,7 +33,7 @@ class EntryTest extends TestCase
 	 */
 	public function testQueryByFormsIdPaginated()
 	{
-		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `wp_cf_form_entries` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') LIMIT '26', '50'";
+		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `wp_cf_form_entries` WHERE (`{$this->entryTableName()}`.`form_id` = 'cf12345') LIMIT 26, 50";
 		$actualSql = $this
 			->entryGeneratorFactory()
 			->queryByFormsId('cf12345')
@@ -49,7 +49,7 @@ class EntryTest extends TestCase
 	 */
 	public function testQueryByEntryId()
 	{
-		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `{$this->entryTableName()}` WHERE (`{$this->entryTableName()}`.`id` = '42')";
+		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `{$this->entryTableName()}` WHERE (`{$this->entryTableName()}`.`id` = 42)";
 		$entryGenerator = $this->entryGeneratorFactory();
 		$generator = $entryGenerator->queryByEntryId(42);
 		$this->assertTrue($this->isAEntry($generator));
@@ -65,7 +65,7 @@ class EntryTest extends TestCase
 	 */
 	public function testQueryByUserId()
 	{
-		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `{$this->entryTableName()}` WHERE (`{$this->entryTableName()}`.`user_id` = '42')";
+		$expectedSql = "SELECT `{$this->entryTableName()}`.* FROM `{$this->entryTableName()}` WHERE (`{$this->entryTableName()}`.`user_id` = 42)";
 		$entryGenerator = $this->entryGeneratorFactory();
 		$generator = $entryGenerator->queryByUserId(42);
 		$this->assertTrue($this->isAEntry($generator));

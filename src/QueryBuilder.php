@@ -103,7 +103,7 @@ abstract class QueryBuilder implements CreatesSqlQueries
             if (is_array($value) || is_object($value)) {
                 continue;
             }elseif (is_numeric( $value)){
-                $value[$identifier] = (int) $value;
+                $values[$identifier] = (int) $value;
             } else {
                 $values[$identifier] = $this->surroundValue($value);
             }

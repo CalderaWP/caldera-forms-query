@@ -66,7 +66,7 @@ class EntryValuesTest extends TestCase
 	 */
 	public function testQueryByEntryId()
 	{
-		$expectedSql = "SELECT `{$this->entryValueTableName()}`.* FROM `{$this->entryValueTableName()}` WHERE (`{$this->entryValueTableName()}`.`entry_id` = '42')";
+		$expectedSql = "SELECT `{$this->entryValueTableName()}`.* FROM `{$this->entryValueTableName()}` WHERE (`{$this->entryValueTableName()}`.`entry_id` = 42)";
 		$entryValues = $this->entryValuesGeneratorFactory();
 		$generator = $entryValues->queryByEntryId(42);
 		$this->assertTrue($this->isAEntryValues($generator));
