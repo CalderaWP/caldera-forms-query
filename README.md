@@ -171,7 +171,7 @@ A  local development environment is included, and provided. It is used for integ
 * Install Local Environment And WordPress "Unit" Test Suite
 - `composer wp-install`
 
-You should know have WordPress at http://localhost:8888/
+You should know have WordPress at http://localhost:8881
 
 * (re)Start Server: Once server is installed, you can start it again
 - `composer wp-start`

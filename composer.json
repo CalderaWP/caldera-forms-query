@@ -31,6 +31,7 @@
         "wp-install": "bash ./bin/install-docker.sh",
         "wp-tests": "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist",
         "phpunit-v": "phpunit --version",
+        "wp-phpunit-v": "docker-compose run --rm wordpress_phpunit phpunit --version",
         "sniffs" : "phpcs src/ && phpcs Tests/",
         "fixes" : "phpcbf src/ && phpcbf Tests/",
         "lints" : "parallel-lint ./src  --blame --exclude vendor && parallel-lint ./tests  --blame --exclude vendor"

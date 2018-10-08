@@ -5,7 +5,7 @@ services:
   wordpress:
     image: wordpress
     ports:
-      - 8888:80
+      - 8881:80
     environment:
       WORDPRESS_DB_PASSWORD: example
       ABSPATH: /usr/src/wordpress/

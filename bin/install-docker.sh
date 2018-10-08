@@ -37,6 +37,7 @@ HOST_PORT=$(docker-compose port wordpress 80 | awk -F : '{printf $2}')
 
 # Wait until the docker containers are setup properely
 echo -en $(status_message "Attempting to connect to wordpress...")
+echo -en $(status_message http://localhost:$HOST_PORT)
 until $(curl -L http://localhost:$HOST_PORT -so - 2>&1 | grep -q "WordPress"); do
     echo -n '.'
     sleep 5
